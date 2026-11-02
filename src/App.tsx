@@ -4,7 +4,6 @@ import { Hero } from './components/Hero';
 import { CategoryFilter } from './components/CategoryFilter';
 import { AppCard } from './components/AppCard';
 import { AppRunner } from './components/AppRunner';
-import { ArchitectureSection } from './components/ArchitectureSection';
 import { Footer } from './components/Footer';
 import { APPS_DATA } from './data/apps';
 import { AppCategory } from './types';
@@ -128,13 +127,7 @@ export function App() {
       ) : (
         // Umbrella First Page / Showcase (Daylight)
         <main className="flex-1 flex flex-col">
-          <Hero
-            onScrollToApps={() => {
-              const el = document.getElementById('apps-grid');
-              el?.scrollIntoView({ behavior: 'smooth' });
-            }}
-            onSelectFeatured={handleSelectApp}
-          />
+          <Hero />
 
           {/* Applications Showcase Section */}
           <section id="apps-grid" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 flex-1 w-full">
@@ -192,9 +185,6 @@ export function App() {
               </div>
             )}
           </section>
-
-          {/* Unified Deterministic Architecture Section */}
-          <ArchitectureSection />
         </main>
       )}
 
