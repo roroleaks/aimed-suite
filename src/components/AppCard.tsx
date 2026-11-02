@@ -68,13 +68,20 @@ export const AppCard: React.FC<AppCardProps> = ({ app, onOpenApp }) => {
         <div className="flex items-start justify-between gap-3 mb-4">
           <div className="flex items-center gap-3">
             <div 
-              className="w-11 h-11 rounded-xl flex items-center justify-center border shadow-sm"
+              className="w-12 h-12 rounded-xl flex items-center justify-center border shadow-md p-1.5 overflow-hidden shrink-0 bg-slate-900"
               style={{ 
-                backgroundColor: app.color.bg, 
                 borderColor: app.color.border 
               }}
             >
-              {getAppIcon(app.id)}
+              <img 
+                src={app.iconUrl} 
+                alt={`${app.name} icon`} 
+                className="w-full h-full object-contain rounded-lg"
+                onError={(e) => {
+                  // Fallback if image fails
+                  (e.target as HTMLElement).style.display = 'none';
+                }}
+              />
             </div>
             <div>
               <div className="flex items-center gap-2">

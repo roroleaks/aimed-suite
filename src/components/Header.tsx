@@ -108,10 +108,20 @@ export const Header: React.FC<HeaderProps> = ({
             <span className="hidden sm:inline">roroleaks</span>
           </a>
 
-          {/* Lead Investigator Badge */}
-          <div className="hidden sm:flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-900/80 border border-slate-800 text-xs text-slate-300">
-            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-            <span>Dr. Raouf Roshdy</span>
+          {/* Lead Investigator Badge with Photo */}
+          <div className="flex items-center gap-2 pl-2 border-l border-slate-800">
+            <div className="relative">
+              <img
+                src="/dr-raouf.jpg"
+                alt="Dr. Raouf Roshdy"
+                className="w-8 h-8 rounded-full object-cover border border-teal-500/40 shadow-sm"
+              />
+              <span className="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-emerald-400 border-2 border-slate-950 animate-pulse"></span>
+            </div>
+            <div className="hidden sm:block text-left">
+              <div className="text-xs font-semibold text-white leading-tight">Dr. Raouf Roshdy</div>
+              <div className="text-[10px] text-teal-400 font-medium">Lead Investigator</div>
+            </div>
           </div>
         </div>
       </div>

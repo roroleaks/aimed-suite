@@ -13,6 +13,7 @@ export interface AppItem {
   tagline: string;
   description: string;
   category: AppCategory;
+  iconUrl: string;
   liveUrl: string;
   githubUrl: string;
   primaryLanguage: string;

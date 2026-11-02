@@ -25,18 +25,24 @@ export const Footer: React.FC<FooterProps> = ({ onSelectApp, onNavigateHome }) =
               An evidence-grounded umbrella suite consolidating 11 medical AI web applications and research pipelines. Built with zero-hallucination deterministic integrity, Vancouver ICMJE referencing, and publication-ready formatting.
             </p>
             <div className="flex items-center gap-3">
+              <img
+                src="/dr-raouf.jpg"
+                alt="Dr. Raouf Roshdy"
+                className="w-10 h-10 rounded-full object-cover border-2 border-teal-500/40 shrink-0"
+              />
+              <div>
+                <div className="text-xs font-bold text-white">Dr. Raouf Roshdy</div>
+                <div className="text-[11px] text-teal-400">Lead Investigator & Creator</div>
+              </div>
               <a
                 href="https://github.com/roroleaks"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-900 hover:bg-slate-850 text-slate-300 hover:text-white border border-slate-800 transition-colors"
+                className="ml-auto inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-900 hover:bg-slate-850 text-slate-300 hover:text-white border border-slate-800 transition-colors"
               >
                 <GithubIcon className="w-3.5 h-3.5" />
                 <span>GitHub @roroleaks</span>
               </a>
-              <span className="text-[11px] text-slate-500">
-                Lead Investigator: <strong className="text-slate-300">Dr. Raouf Roshdy</strong>
-              </span>
             </div>
           </div>
 

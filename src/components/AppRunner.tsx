@@ -60,22 +60,29 @@ export const AppRunner: React.FC<AppRunnerProps> = ({ app, onBack, onSelectApp }
 
           <div className="h-5 w-[1px] bg-slate-800 hidden sm:block" />
 
-          <div>
-            <div className="flex items-center gap-2">
-              <h2 className="font-bold text-sm sm:text-base text-white flex items-center gap-2">
-                {app.name}
-              </h2>
-              <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-teal-500/10 text-teal-400 border border-teal-500/20">
-                {app.category}
-              </span>
-              <span className="hidden md:inline-flex items-center gap-1 text-[10px] text-emerald-400 font-medium">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-                Live Web App
-              </span>
+          <div className="flex items-center gap-2.5">
+            <img 
+              src={app.iconUrl} 
+              alt={app.name} 
+              className="w-7 h-7 rounded-lg object-contain bg-slate-900 border border-slate-800 p-0.5" 
+            />
+            <div>
+              <div className="flex items-center gap-2">
+                <h2 className="font-bold text-sm sm:text-base text-white flex items-center gap-2">
+                  {app.name}
+                </h2>
+                <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-teal-500/10 text-teal-400 border border-teal-500/20">
+                  {app.category}
+                </span>
+                <span className="hidden md:inline-flex items-center gap-1 text-[10px] text-emerald-400 font-medium">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                  Live Web App
+                </span>
+              </div>
+              <p className="text-[11px] text-slate-400 truncate max-w-xs sm:max-w-md hidden sm:block">
+                {app.tagline}
+              </p>
             </div>
-            <p className="text-[11px] text-slate-400 truncate max-w-xs sm:max-w-md hidden sm:block">
-              {app.tagline}
-            </p>
           </div>
         </div>
 
@@ -326,20 +333,27 @@ export const AppRunner: React.FC<AppRunnerProps> = ({ app, onBack, onSelectApp }
 
             {/* Author Attribution */}
             <div className="mt-auto pt-6 border-t border-slate-800/80">
-              <div className="text-[11px] text-slate-400 mb-1">Lead Investigator</div>
-              <div className="text-xs font-semibold text-white flex items-center justify-between">
-                <span>Dr. Raouf Roshdy</span>
+              <div className="flex items-center gap-3 mb-2">
+                <img
+                  src="/dr-raouf.jpg"
+                  alt="Dr. Raouf Roshdy"
+                  className="w-9 h-9 rounded-full object-cover border border-teal-500/40 shrink-0"
+                />
+                <div>
+                  <div className="text-xs font-bold text-white">Dr. Raouf Roshdy</div>
+                  <div className="text-[10px] text-teal-400">Lead Investigator & Creator</div>
+                </div>
                 <a
                   href="https://github.com/roroleaks"
                   target="_blank"
                   rel="noreferrer"
-                  className="text-teal-400 hover:underline text-[11px] flex items-center gap-1"
+                  className="ml-auto text-teal-400 hover:underline text-[11px] flex items-center gap-1"
                 >
                   <GithubIcon className="w-3 h-3" /> roroleaks
                 </a>
               </div>
               {app.authorNotes && (
-                <p className="text-[11px] text-slate-500 italic mt-2 leading-relaxed">
+                <p className="text-[11px] text-slate-400 italic mt-2 leading-relaxed bg-slate-900/60 p-2.5 rounded-lg border border-slate-850">
                   "{app.authorNotes}"
                 </p>
               )}

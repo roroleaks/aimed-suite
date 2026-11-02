@@ -13,12 +13,17 @@ export const Hero: React.FC<HeroProps> = ({ onScrollToApps, onSelectFeatured }) 
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[360px] bg-gradient-to-b from-teal-500/10 via-sky-500/5 to-transparent blur-3xl pointer-events-none -z-10" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-        {/* Initiative Pill */}
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-950/60 border border-teal-500/30 text-teal-300 text-xs font-medium mb-6 shadow-sm">
-          <Sparkles className="w-3.5 h-3.5 text-teal-400" />
-          <span>AIMed Biomedical Informatics Initiative</span>
+        {/* Initiative & Author Pill with Photo */}
+        <div className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-slate-900/90 border border-teal-500/30 text-teal-300 text-xs font-medium mb-6 shadow-lg shadow-teal-500/10">
+          <img
+            src="/dr-raouf.jpg"
+            alt="Dr. Raouf Roshdy"
+            className="w-6 h-6 rounded-full object-cover border border-teal-400/60"
+          />
+          <span className="font-semibold text-white">Dr. Raouf Roshdy</span>
           <span className="text-slate-600">•</span>
-          <span className="text-slate-400">Dr. Raouf Roshdy</span>
+          <span className="text-slate-300">AIMed Biomedical Informatics Initiative</span>
+          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
         </div>
 
         {/* Main Title */}
