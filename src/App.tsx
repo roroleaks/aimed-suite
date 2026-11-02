@@ -142,9 +142,6 @@ export function App() {
                     {filteredApps.length} Available
                   </span>
                 </div>
-                <p className="text-xs text-slate-500 mt-1 font-medium">
-                  Launch any application directly in the umbrella workspace or open standalone.
-                </p>
               </div>
 
               {/* Category Pills */}
