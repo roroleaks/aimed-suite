@@ -315,7 +315,7 @@ export const APPS_DATA: AppItem[] = [
     description: 'Conversational clinical intelligence system calibrated for biomedical inquiry, differential diagnosis reasoning, and medical education guidance.',
     category: 'Medical AI & Search',
     iconUrl: '/icons/rorogpt.png',
-    liveUrl: 'https://rorogpt.vercel.app',
+    liveUrl: 'https://rorogpt.uk',
     githubUrl: 'https://github.com/roroleaks/rorogpt',
     primaryLanguage: 'JavaScript',
     featured: false,

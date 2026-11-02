@@ -6,9 +6,9 @@ import { AppCard } from './components/AppCard';
 import { AppRunner } from './components/AppRunner';
 import { ArchitectureSection } from './components/ArchitectureSection';
 import { Footer } from './components/Footer';
-import { APPS_DATA, CATEGORIES } from './data/apps';
+import { APPS_DATA } from './data/apps';
 import { AppCategory } from './types';
-import { Compass, Sparkles, AlertCircle } from 'lucide-react';
+import { Compass } from 'lucide-react';
 
 export function App() {
   const [currentAppId, setCurrentAppId] = useState<string | null>(null);
@@ -105,7 +105,7 @@ export function App() {
   }, [selectedCategory, searchQuery]);
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#070b14] text-slate-100 grid-bg">
+    <div className="min-h-screen flex flex-col bg-slate-50 text-slate-900 daylight-grid-bg">
       {/* Sticky Top Header */}
       <Header
         currentAppId={currentAppId || undefined}
@@ -126,7 +126,7 @@ export function App() {
           />
         </main>
       ) : (
-        // Umbrella First Page / Showcase
+        // Umbrella First Page / Showcase (Daylight)
         <main className="flex-1 flex flex-col">
           <Hero
             onScrollToApps={() => {
@@ -142,14 +142,14 @@ export function App() {
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
               <div>
                 <div className="flex items-center gap-2">
-                  <h2 className="text-xl sm:text-2xl font-bold text-white tracking-tight">
+                  <h2 className="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight">
                     Biomedical Applications & Tools
                   </h2>
-                  <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-slate-900 border border-slate-800 text-slate-400">
+                  <span className="text-xs font-bold px-2.5 py-0.5 rounded-full bg-slate-100 border border-slate-200 text-slate-700">
                     {filteredApps.length} Available
                   </span>
                 </div>
-                <p className="text-xs text-slate-400 mt-1">
+                <p className="text-xs text-slate-500 mt-1 font-medium">
                   Launch any application directly in the umbrella workspace or open standalone.
                 </p>
               </div>
@@ -174,10 +174,10 @@ export function App() {
                 ))}
               </div>
             ) : (
-              <div className="text-center py-16 glass-card rounded-2xl border-slate-800/80">
-                <Compass className="w-10 h-10 text-slate-600 mx-auto mb-3" />
-                <h3 className="text-base font-bold text-white">No applications match your query</h3>
-                <p className="text-xs text-slate-400 mt-1 max-w-sm mx-auto">
+              <div className="text-center py-16 bg-white rounded-2xl border border-slate-200 shadow-xs">
+                <Compass className="w-10 h-10 text-slate-400 mx-auto mb-3" />
+                <h3 className="text-base font-bold text-slate-800">No applications match your query</h3>
+                <p className="text-xs text-slate-500 mt-1 max-w-sm mx-auto">
                   Try adjusting your search terms or selecting 'All' from the category filter.
                 </p>
                 <button
@@ -185,7 +185,7 @@ export function App() {
                     setSearchQuery('');
                     setSelectedCategory('All');
                   }}
-                  className="mt-4 px-4 py-2 rounded-xl bg-teal-500/10 text-teal-400 border border-teal-500/30 text-xs font-semibold hover:bg-teal-500 hover:text-slate-950 transition-colors"
+                  className="mt-4 px-4 py-2 rounded-xl bg-teal-50 text-teal-700 border border-teal-200 text-xs font-semibold hover:bg-teal-600 hover:text-white transition-colors cursor-pointer"
                 >
                   Reset Filters
                 </button>

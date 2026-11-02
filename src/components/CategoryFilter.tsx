@@ -23,18 +23,18 @@ export const CategoryFilter: React.FC<CategoryFilterProps> = ({
           <button
             key={category}
             onClick={() => onSelectCategory(category)}
-            className={`whitespace-nowrap px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all duration-200 flex items-center gap-1.5 ${
+            className={`whitespace-nowrap px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all duration-200 flex items-center gap-1.5 cursor-pointer ${
               isSelected
-                ? 'bg-teal-500 text-slate-950 font-semibold shadow-md shadow-teal-500/20'
-                : 'bg-slate-900/90 hover:bg-slate-800 text-slate-400 hover:text-slate-200 border border-slate-800/80 hover:border-slate-700'
+                ? 'bg-teal-600 text-white font-semibold shadow-sm'
+                : 'bg-white hover:bg-slate-100 text-slate-600 hover:text-slate-900 border border-slate-200/90'
             }`}
           >
             <span>{category}</span>
             <span
-              className={`text-[10px] px-1.5 py-0.2 rounded-full ${
+              className={`text-[10px] px-1.5 py-0.2 rounded-full font-semibold ${
                 isSelected
-                  ? 'bg-slate-950/30 text-slate-950 font-bold'
-                  : 'bg-slate-800 text-slate-500'
+                  ? 'bg-white/20 text-white'
+                  : 'bg-slate-100 text-slate-500'
               }`}
             >
               {count}
