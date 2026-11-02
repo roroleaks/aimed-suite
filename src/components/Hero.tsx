@@ -1,5 +1,5 @@
 import React from 'react';
-import { ShieldCheck, Database, BookOpen, Layers, ArrowRight, CheckCircle2 } from 'lucide-react';
+import { ShieldCheck, Database, BookOpen, Layers, ArrowRight, CheckCircle2, ExternalLink } from 'lucide-react';
 
 interface HeroProps {
   onScrollToApps: () => void;
@@ -36,19 +36,21 @@ export const Hero: React.FC<HeroProps> = ({ onScrollToApps, onSelectFeatured }) 
         <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
           <button
             onClick={onScrollToApps}
-            className="px-6 py-3 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-semibold text-sm shadow-md shadow-teal-600/20 hover:shadow-teal-600/30 transition-all flex items-center gap-2"
+            className="px-6 py-3 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-semibold text-sm shadow-md shadow-teal-600/20 hover:shadow-teal-600/30 transition-all flex items-center gap-2 cursor-pointer"
           >
             <span>Explore All 11 Applications</span>
             <ArrowRight className="w-4 h-4" />
           </button>
 
-          <button
-            onClick={() => onSelectFeatured('aipico')}
-            className="px-6 py-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 font-medium text-sm border border-slate-200 transition-all flex items-center gap-2"
+          <a
+            href="https://aipico-app.vercel.app"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-6 py-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 font-semibold text-sm border border-slate-200 transition-all flex items-center gap-2"
           >
             <span>Launch Flagship: AIPICO v3.1</span>
-            <span className="w-2 h-2 rounded-full bg-teal-500"></span>
-          </button>
+            <ExternalLink className="w-4 h-4 text-slate-500" />
+          </a>
         </div>
 
         {/* Metrics Grid (Crisp Daylight Cards) */}

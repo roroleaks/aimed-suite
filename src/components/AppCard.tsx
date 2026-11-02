@@ -1,8 +1,8 @@
 import React from 'react';
 import { 
   ExternalLink, 
-  ArrowUpRight, 
-  Play
+  Play,
+  Info
 } from 'lucide-react';
 import { GithubIcon } from './GithubIcon';
 import { AppItem } from '../types';
@@ -67,15 +67,6 @@ export const AppCard: React.FC<AppCardProps> = ({ app, onOpenApp }) => {
             >
               <GithubIcon className="w-4 h-4" />
             </a>
-            <a
-              href={app.liveUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-1.5 rounded-lg text-slate-400 hover:text-teal-600 hover:bg-slate-100 transition-colors"
-              title="Open Direct Vercel App in New Tab"
-            >
-              <ExternalLink className="w-4 h-4" />
-            </a>
           </div>
         </div>
 
@@ -107,25 +98,27 @@ export const AppCard: React.FC<AppCardProps> = ({ app, onOpenApp }) => {
         </div>
       </div>
 
-      {/* Card Action Footer */}
+      {/* Card Action Footer: Direct launch in clean new page */}
       <div className="pt-3 border-t border-slate-100 flex items-center justify-between gap-2 mt-auto">
-        <button
-          onClick={() => onOpenApp(app.id)}
-          className="flex-1 py-2 px-3 rounded-xl bg-teal-50 hover:bg-teal-600 text-teal-700 hover:text-white border border-teal-200 hover:border-teal-600 text-xs font-semibold transition-all duration-200 flex items-center justify-center gap-1.5 group/btn cursor-pointer"
-        >
-          <Play className="w-3.5 h-3.5 fill-current" />
-          <span>Launch Web App</span>
-        </button>
-
         <a
           href={app.liveUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="p-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-600 hover:text-slate-900 border border-slate-200 transition-colors text-xs font-medium flex items-center gap-1"
-          title="Direct URL"
+          className="flex-1 py-2 px-3 rounded-xl bg-teal-600 hover:bg-teal-700 text-white text-xs font-semibold transition-all duration-200 flex items-center justify-center gap-1.5 shadow-xs hover:shadow-md cursor-pointer"
         >
-          <ArrowUpRight className="w-3.5 h-3.5" />
+          <Play className="w-3.5 h-3.5 fill-current" />
+          <span>Launch Web App</span>
+          <ExternalLink className="w-3.5 h-3.5 ml-0.5 opacity-80" />
         </a>
+
+        <button
+          onClick={() => onOpenApp(app.id)}
+          className="py-2 px-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 border border-slate-200 transition-colors text-xs font-medium flex items-center gap-1 cursor-pointer"
+          title="View Specs & Workflow"
+        >
+          <Info className="w-3.5 h-3.5 text-slate-500" />
+          <span>Specs</span>
+        </button>
       </div>
     </div>
   );
