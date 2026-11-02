@@ -1,0 +1,120 @@
+import React from 'react';
+import { Activity, Sparkles, ExternalLink, Compass } from 'lucide-react';
+import { GithubIcon } from './GithubIcon';
+import { APPS_DATA } from '../data/apps';
+
+interface HeaderProps {
+  currentAppId?: string;
+  onNavigateHome: () => void;
+  onSelectApp: (id: string) => void;
+  searchQuery: string;
+  setSearchQuery: (query: string) => void;
+}
+
+export const Header: React.FC<HeaderProps> = ({
+  currentAppId,
+  onNavigateHome,
+  onSelectApp,
+  searchQuery,
+  setSearchQuery
+}) => {
+  return (
+    <header className="sticky top-0 z-50 glass-card border-b border-slate-800/80 bg-slate-950/80 backdrop-blur-xl">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
+        {/* Brand / Logo */}
+        <div className="flex items-center gap-3 cursor-pointer select-none group" onClick={onNavigateHome}>
+          <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-teal-500 via-emerald-500 to-cyan-500 p-[1.5px] shadow-lg shadow-teal-500/20 group-hover:shadow-teal-500/40 transition-all duration-300">
+            <div className="w-full h-full bg-slate-950 rounded-[10px] flex items-center justify-center">
+              <Activity className="w-5 h-5 text-teal-400 group-hover:scale-110 transition-transform duration-300" />
+            </div>
+          </div>
+          <div>
+            <div className="flex items-center gap-2">
+              <span className="font-bold text-lg tracking-tight text-white group-hover:text-teal-300 transition-colors">
+                AIMed Suite
+              </span>
+              <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-teal-500/10 text-teal-400 border border-teal-500/20 uppercase tracking-wider">
+                Umbrella Hub
+              </span>
+            </div>
+            <p className="text-xs text-slate-400 hidden sm:block">
+              Clinical AI & Biomedical Informatics Ecosystem
+            </p>
+          </div>
+        </div>
+
+        {/* Global Search Bar (when on home page) */}
+        {!currentAppId && (
+          <div className="hidden md:flex flex-1 max-w-md mx-4">
+            <div className="relative w-full">
+              <input
+                type="text"
+                placeholder="Search across all 11 medical web apps, features, guidelines..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="w-full bg-slate-900/90 border border-slate-800 rounded-lg px-4 py-1.5 pl-9 text-sm text-slate-200 placeholder-slate-500 focus:outline-none focus:border-teal-500/60 focus:ring-1 focus:ring-teal-500/30 transition-all"
+              />
+              <Compass className="w-4 h-4 text-slate-500 absolute left-3 top-2.5" />
+              {searchQuery && (
+                <button
+                  onClick={() => setSearchQuery('')}
+                  className="absolute right-2.5 top-2 text-xs text-slate-500 hover:text-slate-300"
+                >
+                  ✕
+                </button>
+              )}
+            </div>
+          </div>
+        )}
+
+        {/* Right Action Tools */}
+        <div className="flex items-center gap-3">
+          {/* Quick Repo Dropdown */}
+          <div className="relative hidden lg:block">
+            <select
+              value={currentAppId || ''}
+              onChange={(e) => {
+                if (e.target.value) {
+                  onSelectApp(e.target.value);
+                } else {
+                  onNavigateHome();
+                }
+              }}
+              className="bg-slate-900 border border-slate-800 text-xs text-slate-300 rounded-lg px-3 py-1.5 pr-8 focus:outline-none focus:border-teal-500 cursor-pointer hover:bg-slate-850 transition-colors appearance-none"
+            >
+              <option value="">Jump to Application...</option>
+              {APPS_DATA.map((app) => (
+                <option key={app.id} value={app.id}>
+                  {app.name} ({app.category})
+                </option>
+              ))}
+            </select>
+            <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-slate-400">
+              <svg className="fill-current h-4 w-4" viewBox="0 0 20 20">
+                <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" />
+              </svg>
+            </div>
+          </div>
+
+          {/* GitHub Profile */}
+          <a
+            href="https://github.com/roroleaks"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-300 hover:text-white border border-slate-800 hover:border-slate-700 transition-all text-xs font-medium"
+            title="Dr. Raouf Roshdy on GitHub"
+          >
+            <GithubIcon className="w-3.5 h-3.5" />
+            <span className="hidden sm:inline">roroleaks</span>
+          </a>
+
+          {/* Lead Investigator Badge */}
+          <div className="hidden sm:flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-900/80 border border-slate-800 text-xs text-slate-300">
+            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            <span>Dr. Raouf Roshdy</span>
+          </div>
+        </div>
+      </div>
+    </header>
+  );
+};
