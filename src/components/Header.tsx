@@ -49,7 +49,7 @@ export const Header: React.FC<HeaderProps> = ({
             <div className="relative w-full">
               <input
                 type="text"
-                placeholder="Search across all 11 medical web apps, features, guidelines..."
+                placeholder="Search across all 12 medical web apps, features, guidelines..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="w-full bg-slate-50 hover:bg-slate-100/70 focus:bg-white border border-slate-200 rounded-lg px-4 py-1.5 pl-9 text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 transition-all"

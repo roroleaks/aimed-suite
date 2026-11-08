@@ -21,7 +21,7 @@ export const Footer: React.FC<FooterProps> = ({ onSelectApp, onNavigateHome }) =
               <span className="font-bold text-base text-slate-900">AIMed Suite</span>
             </div>
             <p className="text-slate-600 text-xs leading-relaxed max-w-md mb-4">
-              An evidence-grounded umbrella suite consolidating 11 medical AI web applications and research pipelines. Built with zero-hallucination deterministic integrity, Vancouver ICMJE referencing, and publication-ready formatting.
+              An evidence-grounded umbrella suite consolidating 12 medical AI web applications and research pipelines. Built with zero-hallucination deterministic integrity, Vancouver ICMJE referencing, and publication-ready formatting.
             </p>
             <div className="flex items-center gap-3">
               <img

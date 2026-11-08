@@ -3,7 +3,7 @@
 > **Unified Biomedical Informatics & Clinical Decision Support Ecosystem**  
 > Engineered by **Dr. Raouf Roshdy** (`@roroleaks`)
 
-A production-grade umbrella web portal consolidating **11 specialized biomedical web applications** under a unified branding design system, cohesive clinical navigation, and dedicated in-portal interactive workspaces (`/app/:id`) deployed on Vercel.
+A production-grade umbrella web portal consolidating **12 specialized biomedical web applications** under a unified branding design system, cohesive clinical navigation, and dedicated in-portal interactive workspaces (`/app/:id`) deployed on Vercel.
 
 ---
 
@@ -22,6 +22,7 @@ A production-grade umbrella web portal consolidating **11 specialized biomedical
 | 9 | **AMS Medical Search** | Medical AI & Search | `https://ams-eg.lovable.app` | [`roroleaks/ams-eg`](https://github.com/roroleaks/ams-eg) | High-precision semantic search engine ranking exact excerpts and paragraphs across clinical pharmaceutical documentation. |
 | 10 | **RoroGPT** | Medical AI & Search | `https://rorogpt.vercel.app` | [`roroleaks/rorogpt`](https://github.com/roroleaks/rorogpt) | Intelligent clinical reasoning assistant calibrated for biomedical inquiry, differential diagnosis, and medical education. |
 | 11 | **Free AI Tracker** | Medical AI & Search | `https://free-ai-tracker.vercel.app` | [`roroleaks/free-ai-tracker`](https://github.com/roroleaks/free-ai-tracker) | Real-time tracker for free-tier frontier AI models (Gemini, Groq, Mistral, OpenAI), context limits, and API quotas. |
+| 12 | **Kashef (كاشف)** | Critical Appraisal | `https://kashef-psi.vercel.app` | [`roroleaks/kashef`](https://github.com/roroleaks/kashef) | Probabilistic AI text estimation & evidence breakdown across biomedical papers and manuscripts via multi-signal stylometry and zero-retention LLM forensics. |
 
 ---
 
@@ -29,7 +30,7 @@ A production-grade umbrella web portal consolidating **11 specialized biomedical
 
 1. **Unified Umbrella Branding**:
    - Distinctive clinical teal & dark slate aesthetic matching the AIMed Biomedical Informatics design language.
-   - Live metrics summary: 11 Web Apps, 15+ Medical Specialties, 100% Deterministic Evidence Parity, ICMJE Vancouver & APA formatting.
+   - Live metrics summary: 12 Web Apps, 15+ Medical Specialties, 100% Deterministic Evidence Parity, ICMJE Vancouver & APA formatting.
    - Real-time search and filterable category pills (`All`, `Clinical CDSS`, `Evidence Synthesis`, `Critical Appraisal`, `Literature & Presentation`, `Practice Guidelines`, `Medical AI & Search`).
 
 2. **Dedicated Route for Every Application (`/app/:id`)**:

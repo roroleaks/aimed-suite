@@ -373,6 +373,41 @@ export const APPS_DATA: AppItem[] = [
       { step: '2', title: 'Compare Limits', desc: 'Review RPM, RPD, and TPM quotas to architect zero-cost AI pipelines.' },
       { step: '3', title: 'Deploy Free', desc: 'Copy verified model slugs and SDK endpoints directly into your codebase.' }
     ]
+  },
+  {
+    id: 'kashef',
+    name: 'Kashef (كاشف)',
+    tagline: 'Probabilistic AI Text Estimation & Evidence Breakdown',
+    description: 'Evidence-grounded probabilistic evaluation estimating AI text authorship likelihood across biomedical papers, manuscripts, and clinical trials via multi-signal stylometry and zero-retention language model analysis.',
+    category: 'Critical Appraisal',
+    iconUrl: '/icons/kashef.png',
+    liveUrl: 'https://kashef-psi.vercel.app',
+    githubUrl: 'https://github.com/roroleaks/kashef',
+    primaryLanguage: 'TypeScript',
+    featured: true,
+    status: 'Production',
+    badges: ['Burstiness Variance', 'MATTR Richness', 'Hapax Rate', 'Zero-Data Retention', 'SSRF Guard'],
+    color: {
+      primary: '#1a5c8a', // Kashef Classic Slate-Navy
+      accent: '#4da8da',
+      bg: 'rgba(26, 92, 138, 0.08)',
+      border: 'rgba(77, 168, 218, 0.3)'
+    },
+    clinicalHighlights: [
+      'Multi-signal statistical stylometry (Burstiness variance, Moving-Average TTR, Hapax legomena rate, N-gram repetition, Function-word density)',
+      'Server-side zero-data-retention Engine B evaluation with automatic graceful fallback to Engine A',
+      'Full in-memory document parsing (.docx, .pdf up to 10 MB) and SSRF-hardened URL ingestion (3-hop cap)',
+      'Granular per-paragraph heat-maps and transparent probabilistic ranges [low, high] with zero binary assertions'
+    ],
+    supportedStandards: ['ICMJE Guidelines', 'Unicode Tokenization', 'WCAG AA Accessible', 'SSRF RFC 1918/IPv6 Block'],
+    exportFormats: ['Structured Evidence JSON', 'Interactive Heat-Map', 'Formatted Clipboard'],
+    workflowSteps: [
+      { step: '1', title: 'Input Ingestion', desc: 'Paste text (>= 250 words), upload .docx / .pdf (up to 10 MB), or fetch an article URL with SSRF protection.' },
+      { step: '2', title: 'Multi-Signal Stylometry', desc: 'Engine A calculates burstiness, MATTR lexical diversity, hapax rate, and function-word density in volatile memory.' },
+      { step: '3', title: 'LLM Forensics', desc: 'Optional server-side Engine B evaluates semantic predictability, formulaic transitions, and authorial voice.' },
+      { step: '4', title: 'Consensus & Breakdown', desc: 'Consensus combiner outputs calibrated probability ranges, per-paragraph heat-map, and JSON export.' }
+    ],
+    authorNotes: 'Engineered by Dr. Raouf Roshdy to provide transparent, probabilistic AI text estimation for scientific integrity without unscientific binary claims.'
   }
 ];
 
