@@ -209,37 +209,37 @@ export const APPS_DATA: AppItem[] = [
     ]
   },
   {
-    id: 'aifv',
-    name: 'AIFV',
-    tagline: 'Automated ICS Clinical Decision Support System (CDSS)',
-    description: 'Specialized clinical decision support platform implementing International Continence Society (ICS) standards and algorithmic diagnostics for urogynecology and pelvic health.',
+    id: 'aivf',
+    name: 'AIVF',
+    tagline: 'AI-IVF Clinical Decision Support System (CDSS)',
+    description: 'Evidence-based clinical decision support platform for individualized controlled ovarian stimulation (COS) in IVF & ICSI, synchronizing ESHRE 2025 guidelines, CONSORT nomogram, and POSEIDON stratification.',
     category: 'Clinical CDSS',
-    iconUrl: '/icons/aifv.png',
-    liveUrl: 'https://aifv.vercel.app',
-    githubUrl: 'https://github.com/roroleaks/AIFV',
+    iconUrl: '/icons/aivf.png',
+    liveUrl: 'https://aivf-precision.vercel.app',
+    githubUrl: 'https://github.com/roroleaks/AIVF',
     primaryLanguage: 'TypeScript',
     featured: false,
     status: 'Production',
-    badges: ['ICS CDSS', 'Urogynecology', 'Standardized Diagnostics', 'Clinical Rules'],
+    badges: ['ESHRE 2025', 'IVF / ICSI CDSS', 'CONSORT Nomogram', 'POSEIDON Stratification'],
     color: {
-      primary: '#ec4899', // Pink
-      accent: '#f472b6',
-      bg: 'rgba(236, 72, 153, 0.08)',
-      border: 'rgba(244, 114, 182, 0.3)'
+      primary: '#1E3A8A', // Deep Navy
+      accent: '#3b82f6',
+      bg: 'rgba(30, 58, 138, 0.08)',
+      border: 'rgba(59, 130, 246, 0.3)'
     },
     clinicalHighlights: [
-      'Standardized pelvic organ prolapse and urinary incontinence grading algorithms',
-      'Deterministic rule engine implementing validated ICS diagnostic criteria',
-      'Symptom severity scoring and quality of life impact quantification',
-      'Personalized management recommendation pathways adhering to international guidelines'
+      'Official ESHRE 2025 Guideline Update on Ovarian Stimulation for IVF/ICSI',
+      'Active CONSORT Individualized Starting-Dose Nomogram with 300 IU safety ceiling',
+      'Deterministic POSEIDON Groups 1–4 and ESHRE Bologna Poor Responder stratification',
+      'Section 9 OHSS safety firewall with dual-trigger selection and freeze-all segmentation'
     ],
-    supportedStandards: ['ICS Guidelines', 'IUGA Guidelines', 'ACOG Practice Bulletins'],
-    exportFormats: ['Clinical Assessment Report', 'Patient Summary PDF'],
+    supportedStandards: ['ESHRE 2025 Guidelines', 'CONSORT Nomogram', 'POSEIDON Criteria', 'ASRM Standards'],
+    exportFormats: ['Clinical Intelligence Dossier (PDF)', 'EHR HL7/JSON Export', 'Audit Trail CSV'],
     workflowSteps: [
-      { step: '1', title: 'Clinical Intake', desc: 'Input patient history, symptom profiles, and examination findings.' },
-      { step: '2', title: 'ICS Algorithmic Analysis', desc: 'Engine matches findings against standardized classification criteria.' },
-      { step: '3', title: 'Decision Support', desc: 'Generates evidence-backed non-surgical and surgical care pathways.' },
-      { step: '4', title: 'Clinical Summary', desc: 'Exports comprehensive consultation and treatment plan summary.' }
+      { step: '1', title: 'Clinical Intake', desc: 'Patient demographics, ovarian reserve biomarkers (AMH, AFC), and cycle history.' },
+      { step: '2', title: 'POSEIDON Stratification', desc: 'Automated stratification into POSEIDON Groups 1–4 and Bologna POR verdict.' },
+      { step: '3', title: 'Protocol & Starting Dose', desc: 'Evidence-based protocol recommendation and CONSORT starting dose calculation.' },
+      { step: '4', title: 'Cycle Completion & Dossier', desc: 'Follicular monitoring, OHSS firewall verification, and signed intelligence dossier.' }
     ]
   },
   {

@@ -20,7 +20,8 @@ export function App() {
       const path = window.location.pathname;
       const match = path.match(/^\/app\/([a-zA-Z0-9-_]+)/);
       if (match && match[1]) {
-        const found = APPS_DATA.find((a) => a.id.toLowerCase() === match[1].toLowerCase());
+        const targetId = match[1].toLowerCase() === 'aifv' ? 'aivf' : match[1].toLowerCase();
+        const found = APPS_DATA.find((a) => a.id.toLowerCase() === targetId);
         if (found) {
           setCurrentAppId(found.id);
           return;
@@ -30,7 +31,8 @@ export function App() {
       const hash = window.location.hash;
       const hashMatch = hash.match(/^#\/app\/([a-zA-Z0-9-_]+)/);
       if (hashMatch && hashMatch[1]) {
-        const found = APPS_DATA.find((a) => a.id.toLowerCase() === hashMatch[1].toLowerCase());
+        const targetId = hashMatch[1].toLowerCase() === 'aifv' ? 'aivf' : hashMatch[1].toLowerCase();
+        const found = APPS_DATA.find((a) => a.id.toLowerCase() === targetId);
         if (found) {
           setCurrentAppId(found.id);
           return;
