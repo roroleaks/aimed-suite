@@ -276,37 +276,39 @@ export const APPS_DATA: AppItem[] = [
     ]
   },
   {
-    id: 'ams-eg',
-    name: 'Doctor\'s Insight Search (AMS)',
-    tagline: 'Precision Medical Product Insight & Literature Search Engine',
-    description: 'High-precision semantic search engine across healthcare and pharmaceutical documentation. Retrieves and ranks exact paragraphs and clinical excerpts by relevance.',
-    category: 'Medical AI & Search',
-    iconUrl: '/icons/ams-eg.png',
-    liveUrl: 'https://ams-eg.lovable.app',
-    githubUrl: 'https://github.com/roroleaks/ams-eg',
+    id: 'humanizer',
+    name: 'Humanizer',
+    tagline: 'Academic Writing Intelligence & Scientific Manuscript Refinement',
+    description: 'Deterministic, chunk-based academic manuscript refinement platform with multi-provider AI failover, numerical invariant guards, protected clinical inventory preservation, and real-time integrity auditing.',
+    category: 'Literature & Presentation',
+    iconUrl: '/icons/humanizer.png',
+    liveUrl: 'https://humanizer-orcin.vercel.app',
+    githubUrl: 'https://github.com/roroleaks/Humanizer',
     primaryLanguage: 'TypeScript',
-    featured: false,
+    featured: true,
     status: 'Production',
-    badges: ['Paragraph Ranking', 'Pharma CDSS', 'Semantic Extraction', 'Clinical Search'],
+    badges: ['Semantic Chunking', 'Number Guard', 'Multi-Provider Failover', 'Protected Inventory', 'Integrity Auditing'],
     color: {
-      primary: '#3b82f6', // Blue
-      accent: '#60a5fa',
-      bg: 'rgba(59, 130, 246, 0.08)',
-      border: 'rgba(96, 165, 250, 0.3)'
+      primary: '#0b2545', // Deep Navy
+      accent: '#13818b',  // Teal Accent
+      bg: 'rgba(11, 37, 69, 0.08)',
+      border: 'rgba(19, 129, 139, 0.3)'
     },
     clinicalHighlights: [
-      'Paragraph-level relevance ranking across complex medical PDFs and brochures',
-      'Exact quote extraction highlighting key indications and safety warnings',
-      'Clean typography with focused reading mode for clinicians',
-      'Zero latency client-side search execution'
+      'Two-pass deterministic semantic chunking with adjacent context summarization',
+      'Strict numerical invariant guard preventing alteration of dosages, p-values, sample sizes, and statistics',
+      'Protected inventory pre-ambles preserving specialized clinical terminology and proper nouns',
+      'Multi-provider AI orchestrator with real-time failover across OpenAI, Gemini, and Anthropic'
     ],
-    supportedStandards: ['Medical Search Standards', 'Document Parsing'],
-    exportFormats: ['Paragraph Clip', 'Search Results Summary'],
+    supportedStandards: ['ICMJE Guidelines', 'Academic Writing Integrity', 'Zero Numerical Alteration', 'Privacy Consent Enforced'],
+    exportFormats: ['Refined Manuscript Text', 'Integrity Flag Report', 'Formatted Clipboard'],
     workflowSteps: [
-      { step: '1', title: 'Keyword Entry', desc: 'Enter drug names, active ingredients, or clinical indications.' },
-      { step: '2', title: 'Relevance Ranking', desc: 'Ranks exact excerpts based on frequency, proximity, and semantic weight.' },
-      { step: '3', title: 'Insight Extraction', desc: 'Examine highlighted sections with source page and context references.' }
-    ]
+      { step: '1', title: 'Manuscript Intake', desc: 'Paste manuscript or upload document with informed privacy consent verification.' },
+      { step: '2', title: 'Refinement Config', desc: 'Configure academic style, intensity level, and primary/fallback AI provider engines.' },
+      { step: '3', title: 'Semantic Chunking', desc: 'Applies two-pass semantic segmentation with strict numerical and entity protection.' },
+      { step: '4', title: 'Streaming Refinement', desc: 'Streams refined academic prose in real time with automated integrity and flag auditing.' }
+    ],
+    authorNotes: 'Engineered by Dr. Raouf Roshdy to deliver deterministic, high-integrity scientific manuscript refinement while strictly preserving quantitative evidence.'
   },
   {
     id: 'rorogpt',
