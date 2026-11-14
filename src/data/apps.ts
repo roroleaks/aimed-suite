@@ -282,7 +282,7 @@ export const APPS_DATA: AppItem[] = [
     description: 'Deterministic, chunk-based academic manuscript refinement platform with multi-provider AI failover, numerical invariant guards, protected clinical inventory preservation, and real-time integrity auditing.',
     category: 'Literature & Presentation',
     iconUrl: '/icons/humanizer.png',
-    liveUrl: 'https://humanizer-orcin.vercel.app',
+    liveUrl: 'https://humanizero.vercel.app/',
     githubUrl: 'https://github.com/roroleaks/Humanizer',
     primaryLanguage: 'TypeScript',
     featured: true,
