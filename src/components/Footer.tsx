@@ -24,13 +24,29 @@ export const Footer: React.FC<FooterProps> = ({ onSelectApp, onNavigateHome }) =
               An evidence-grounded umbrella suite consolidating 12 medical AI web applications and research pipelines. Built with zero-hallucination deterministic integrity, Vancouver ICMJE referencing, and publication-ready formatting.
             </p>
             <div className="flex items-center gap-3">
-              <img
-                src="/dr-raouf.jpg"
-                alt="Dr. Raouf Roshdy"
-                className="w-10 h-10 rounded-full object-cover border-2 border-teal-600/40 shrink-0 shadow-xs"
-              />
+              <a
+                href="https://dr-raouf.lovable.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="cursor-pointer block rounded-full focus:outline-none transition-transform active:scale-95"
+                title="Dr. Raouf Roshdy"
+              >
+                <img
+                  src="/dr-raouf.jpg"
+                  alt="Dr. Raouf Roshdy"
+                  className="w-10 h-10 rounded-full object-cover border-2 border-teal-600/40 shrink-0 shadow-xs hover:border-teal-600 transition-colors"
+                />
+              </a>
               <div>
-                <div className="text-xs font-bold text-slate-900">Dr. Raouf Roshdy</div>
+                <a
+                  href="https://dr-raouf.lovable.app/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-xs font-bold text-slate-900 hover:text-teal-700 transition-colors cursor-pointer block"
+                  title="Dr. Raouf Roshdy"
+                >
+                  Dr. Raouf Roshdy
+                </a>
                 <div className="text-[11px] text-teal-700 font-semibold">Lead Investigator & Creator</div>
               </div>
             </div>

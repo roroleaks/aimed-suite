@@ -297,13 +297,29 @@ export const AppRunner: React.FC<AppRunnerProps> = ({ app, onBack, onSelectApp }
         {/* Lead Investigator Attribution Card */}
         <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-xs flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-4">
-            <img
-              src="/dr-raouf.jpg"
-              alt="Dr. Raouf Roshdy"
-              className="w-12 h-12 rounded-full object-cover border-2 border-teal-500/40 shadow-xs"
-            />
+            <a
+              href="https://dr-raouf.lovable.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="cursor-pointer block rounded-full focus:outline-none transition-transform active:scale-95"
+              title="Dr. Raouf Roshdy"
+            >
+              <img
+                src="/dr-raouf.jpg"
+                alt="Dr. Raouf Roshdy"
+                className="w-12 h-12 rounded-full object-cover border-2 border-teal-500/40 shadow-xs hover:border-teal-500 transition-colors"
+              />
+            </a>
             <div>
-              <div className="text-sm font-bold text-slate-900">Dr. Raouf Roshdy</div>
+              <a
+                href="https://dr-raouf.lovable.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm font-bold text-slate-900 hover:text-teal-700 transition-colors cursor-pointer block"
+                title="Dr. Raouf Roshdy"
+              >
+                Dr. Raouf Roshdy
+              </a>
               <div className="text-xs text-teal-700 font-semibold">Lead Investigator & Creator</div>
               {app.authorNotes && (
                 <p className="text-xs text-slate-500 italic mt-1 max-w-xl">

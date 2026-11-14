@@ -110,16 +110,30 @@ export const Header: React.FC<HeaderProps> = ({
 
           {/* Lead Investigator Badge with Photo */}
           <div className="flex items-center gap-2 pl-2 border-l border-slate-200">
-            <div className="relative">
+            <a
+              href="https://dr-raouf.lovable.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="relative cursor-pointer block rounded-full focus:outline-none transition-transform active:scale-95"
+              title="Dr. Raouf Roshdy"
+            >
               <img
                 src="/dr-raouf.jpg"
                 alt="Dr. Raouf Roshdy"
-                className="w-8 h-8 rounded-full object-cover border border-teal-500/40 shadow-xs"
+                className="w-8 h-8 rounded-full object-cover border border-teal-500/40 shadow-xs hover:border-teal-500 transition-colors"
               />
               <span className="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-emerald-500 border-2 border-white"></span>
-            </div>
+            </a>
             <div className="hidden sm:block text-left">
-              <div className="text-xs font-bold text-slate-800 leading-tight">Dr. Raouf Roshdy</div>
+              <a
+                href="https://dr-raouf.lovable.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-xs font-bold text-slate-800 leading-tight hover:text-teal-700 transition-colors cursor-pointer block"
+                title="Dr. Raouf Roshdy"
+              >
+                Dr. Raouf Roshdy
+              </a>
               <div className="text-[10px] text-teal-600 font-semibold">Lead Investigator</div>
             </div>
           </div>
