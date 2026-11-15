@@ -14,13 +14,20 @@ export const Footer: React.FC<FooterProps> = ({ onSelectApp, onNavigateHome }) =
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
           {/* Brand & Vision */}
           <div className="md:col-span-2">
-            <div className="flex items-center gap-2.5 mb-3 cursor-pointer" onClick={onNavigateHome}>
+            <div 
+              role="button"
+              tabIndex={0}
+              onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') onNavigateHome(); }}
+              className="flex items-center gap-2.5 mb-3 cursor-pointer select-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-600 rounded-lg p-0.5 w-fit" 
+              onClick={onNavigateHome}
+              aria-label="AIMed Suite homepage"
+            >
               <div className="w-8 h-8 rounded-lg bg-teal-600 text-white flex items-center justify-center shadow-xs">
                 <Activity className="w-4 h-4" />
               </div>
               <span className="font-bold text-base text-slate-900">AIMed Suite</span>
             </div>
-            <p className="text-slate-600 text-xs leading-relaxed max-w-md mb-4">
+            <p className="text-slate-600 text-xs leading-relaxed max-w-md mb-4" style={{ textWrap: 'pretty' }}>
               An evidence-grounded umbrella suite consolidating 12 medical AI web applications and research pipelines. Built with zero-hallucination deterministic integrity, Vancouver ICMJE referencing, and publication-ready formatting.
             </p>
             <div className="flex items-center gap-3">
@@ -28,13 +35,14 @@ export const Footer: React.FC<FooterProps> = ({ onSelectApp, onNavigateHome }) =
                 href="https://dr-raouf.lovable.app/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="cursor-pointer block rounded-full focus:outline-none transition-transform active:scale-95"
+                aria-label="Visit Dr. Raouf Roshdy's portfolio (opens in a new tab)"
+                className="cursor-pointer block rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-600 focus-visible:ring-offset-2 transition-transform duration-150 active:scale-95"
                 title="Dr. Raouf Roshdy"
               >
                 <img
                   src="/dr-raouf.jpg"
                   alt="Dr. Raouf Roshdy"
-                  className="w-10 h-10 rounded-full object-cover border-2 border-teal-600/40 shrink-0 shadow-xs hover:border-teal-600 transition-colors"
+                  className="w-10 h-10 rounded-full object-cover border-2 border-teal-600/40 shrink-0 shadow-xs hover:border-teal-600 transition-colors duration-150 img-hairline"
                 />
               </a>
               <div>
@@ -42,7 +50,7 @@ export const Footer: React.FC<FooterProps> = ({ onSelectApp, onNavigateHome }) =
                   href="https://dr-raouf.lovable.app/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-xs font-bold text-slate-900 hover:text-teal-700 transition-colors cursor-pointer block"
+                  className="text-xs font-bold text-slate-900 hover:text-teal-700 transition-colors duration-150 cursor-pointer block focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-teal-600 rounded"
                   title="Dr. Raouf Roshdy"
                 >
                   Dr. Raouf Roshdy
@@ -61,10 +69,11 @@ export const Footer: React.FC<FooterProps> = ({ onSelectApp, onNavigateHome }) =
               {APPS_DATA.slice(0, 6).map((app) => (
                 <li key={app.id}>
                   <button
+                    type="button"
                     onClick={() => onSelectApp(app.id)}
-                    className="hover:text-teal-700 transition-colors text-left flex items-center gap-1.5 cursor-pointer"
+                    className="hover:text-teal-700 transition-colors duration-150 text-left flex items-center gap-1.5 cursor-pointer focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-teal-600 rounded px-1 -mx-1"
                   >
-                    <span className="w-1.5 h-1.5 rounded-full bg-teal-500"></span>
+                    <span className="w-1.5 h-1.5 rounded-full bg-teal-500" aria-hidden="true"></span>
                     <span className="font-medium text-slate-700 hover:text-slate-900">{app.name}</span>
                   </button>
                 </li>
@@ -81,10 +90,11 @@ export const Footer: React.FC<FooterProps> = ({ onSelectApp, onNavigateHome }) =
               {APPS_DATA.slice(6).map((app) => (
                 <li key={app.id}>
                   <button
+                    type="button"
                     onClick={() => onSelectApp(app.id)}
-                    className="hover:text-teal-700 transition-colors text-left flex items-center gap-1.5 cursor-pointer"
+                    className="hover:text-teal-700 transition-colors duration-150 text-left flex items-center gap-1.5 cursor-pointer focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-teal-600 rounded px-1 -mx-1"
                   >
-                    <span className="w-1.5 h-1.5 rounded-full bg-sky-500"></span>
+                    <span className="w-1.5 h-1.5 rounded-full bg-sky-500" aria-hidden="true"></span>
                     <span className="font-medium text-slate-700 hover:text-slate-900">{app.name}</span>
                   </button>
                 </li>
@@ -95,8 +105,8 @@ export const Footer: React.FC<FooterProps> = ({ onSelectApp, onNavigateHome }) =
 
         {/* Regulatory & Clinical Disclaimer */}
         <div className="p-4 rounded-xl bg-amber-50/80 border border-amber-200/80 flex items-start gap-3 mb-8">
-          <ShieldAlert className="w-4 h-4 text-amber-600 shrink-0 mt-0.5" />
-          <p className="text-[11px] text-amber-900 leading-relaxed">
+          <ShieldAlert className="w-4 h-4 text-amber-600 shrink-0 mt-0.5" aria-hidden="true" />
+          <p className="text-[11px] text-amber-900 leading-relaxed" style={{ textWrap: 'pretty' }}>
             <strong className="text-amber-950 font-bold">Clinical Decision Support & Research Disclaimer:</strong> The AIMed Suite is designed for medical research, literature synthesis, and healthcare professional decision support. It does not replace individualized clinical judgment, patient diagnosis, or direct medical consultation. Never input Protected Health Information (PHI/PII).
           </p>
         </div>
@@ -108,7 +118,7 @@ export const Footer: React.FC<FooterProps> = ({ onSelectApp, onNavigateHome }) =
           </div>
           <div className="flex items-center gap-4">
             <span>Powered by React & TypeScript</span>
-            <span>•</span>
+            <span aria-hidden="true">•</span>
             <span>Deployed on Vercel</span>
           </div>
         </div>

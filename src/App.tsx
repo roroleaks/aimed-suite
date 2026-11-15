@@ -140,7 +140,7 @@ export function App() {
                   <h2 className="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight">
                     Biomedical Applications & Tools
                   </h2>
-                  <span className="text-xs font-bold px-2.5 py-0.5 rounded-full bg-slate-100 border border-slate-200 text-slate-700">
+                  <span className="text-xs font-bold px-2.5 py-0.5 rounded-full bg-slate-100 border border-slate-200 text-slate-700 tabular-nums">
                     {filteredApps.length} Available
                   </span>
                 </div>
@@ -173,13 +173,14 @@ export function App() {
                   Try adjusting your search terms or selecting 'All' from the category filter.
                 </p>
                 <button
+                  type="button"
                   onClick={() => {
                     setSearchQuery('');
                     setSelectedCategory('All');
                   }}
-                  className="mt-4 px-4 py-2 rounded-xl bg-teal-50 text-teal-700 border border-teal-200 text-xs font-semibold hover:bg-teal-600 hover:text-white transition-colors cursor-pointer"
+                  className="btn-press mt-4 px-4 py-2 rounded-xl bg-teal-50 text-teal-700 border border-teal-200 text-xs font-semibold hover:bg-teal-600 hover:text-white transition-colors duration-150 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-600"
                 >
-                  Reset Filters
+                  Reset filters
                 </button>
               </div>
             )}

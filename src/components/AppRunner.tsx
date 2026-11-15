@@ -29,22 +29,27 @@ export const AppRunner: React.FC<AppRunnerProps> = ({ app, onBack, onSelectApp }
         {/* Left: Back & Identity */}
         <div className="flex items-center gap-3">
           <button
+            type="button"
             onClick={onBack}
-            className="p-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200 transition-colors flex items-center gap-1.5 text-xs font-semibold cursor-pointer"
+            className="btn-press p-1.5 pl-2 pr-2.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200 text-xs font-semibold cursor-pointer flex items-center gap-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-600"
             title="Return to Hub"
+            aria-label="Back to application hub"
           >
             <ArrowLeft className="w-4 h-4" />
-            <span className="hidden sm:inline">Hub</span>
+            <span className="hidden sm:inline">Back to Hub</span>
           </button>
 
-          <div className="h-5 w-[1px] bg-slate-200 hidden sm:block" />
+          <div className="h-5 w-[1px] bg-slate-200 hidden sm:block" aria-hidden="true" />
 
           <div className="flex items-center gap-2.5">
-            <img 
-              src={app.iconUrl} 
-              alt={app.name} 
-              className="w-8 h-8 rounded-lg object-contain bg-slate-50 border border-slate-200 p-0.5" 
-            />
+            {/* Concentric radii: 8px outer, 2px padding -> 6px inner */}
+            <div className="w-8 h-8 rounded-lg bg-slate-50 border border-slate-200 p-0.5 flex items-center justify-center shrink-0">
+              <img 
+                src={app.iconUrl} 
+                alt={`${app.name} icon`} 
+                className="w-full h-full object-contain rounded-[6px] img-hairline" 
+              />
+            </div>
             <div>
               <div className="flex items-center gap-2">
                 <h2 className="font-bold text-sm sm:text-base text-slate-900 flex items-center gap-2">
@@ -54,7 +59,7 @@ export const AppRunner: React.FC<AppRunnerProps> = ({ app, onBack, onSelectApp }
                   {app.category}
                 </span>
                 <span className="hidden md:inline-flex items-center gap-1 text-[10px] text-emerald-600 font-semibold">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" aria-hidden="true"></span>
                   Verified Production
                 </span>
               </div>
@@ -67,12 +72,12 @@ export const AppRunner: React.FC<AppRunnerProps> = ({ app, onBack, onSelectApp }
 
         {/* Center & Right: Quick Switcher & Open Fullscreen Web App */}
         <div className="flex items-center gap-3">
-          <label htmlFor="runner-app-select" className="sr-only">Switch Application</label>
+          <label htmlFor="runner-app-select" className="sr-only">Switch application</label>
           <select
             id="runner-app-select"
             value={app.id}
             onChange={(e) => onSelectApp(e.target.value)}
-            className="bg-slate-50 border border-slate-200 text-xs text-slate-700 rounded-lg px-2.5 py-2 pr-7 focus:outline-none focus:border-teal-500 cursor-pointer hover:bg-slate-100 transition-colors appearance-none font-medium hidden sm:block"
+            className="bg-slate-50 border border-slate-200 text-xs text-slate-700 rounded-lg px-2.5 py-2 pr-7 focus:outline-none focus:border-teal-500 focus-visible:ring-2 focus-visible:ring-teal-600 cursor-pointer hover:bg-slate-100 transition-colors duration-150 appearance-none font-medium hidden sm:block"
           >
             {APPS_DATA.map((item) => (
               <option key={item.id} value={item.id}>
@@ -86,11 +91,11 @@ export const AppRunner: React.FC<AppRunnerProps> = ({ app, onBack, onSelectApp }
             href={app.liveUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="px-4 py-2 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-semibold text-xs shadow-md shadow-teal-600/20 transition-all flex items-center gap-1.5 cursor-pointer"
+            className="btn-press px-4 py-2 pl-3.5 pr-4 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-semibold text-xs shadow-md shadow-teal-600/20 flex items-center gap-1.5 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-700 focus-visible:ring-offset-1"
           >
             <Play className="w-3.5 h-3.5 fill-current" />
-            <span>Launch Web App</span>
-            <ExternalLink className="w-3.5 h-3.5 ml-0.5" />
+            <span>Launch web app</span>
+            <ExternalLink className="w-3.5 h-3.5 ml-0.5 opacity-80" />
           </a>
         </div>
       </div>
@@ -102,12 +107,14 @@ export const AppRunner: React.FC<AppRunnerProps> = ({ app, onBack, onSelectApp }
           <div 
             className="absolute top-0 left-0 right-0 h-1" 
             style={{ backgroundColor: app.color.accent }}
+            aria-hidden="true"
           />
 
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
             <div className="flex items-start gap-5">
+              {/* Concentric radii: 16px outer, 8px padding -> 8px inner */}
               <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-slate-50 border border-slate-200 p-2 shadow-xs shrink-0 flex items-center justify-center">
-                <img src={app.iconUrl} alt={app.name} className="w-full h-full object-contain rounded-xl" />
+                <img src={app.iconUrl} alt={app.name} className="w-full h-full object-contain rounded-[8px] img-hairline" />
               </div>
               <div>
                 <div className="flex items-center gap-2 mb-1">
@@ -120,13 +127,13 @@ export const AppRunner: React.FC<AppRunnerProps> = ({ app, onBack, onSelectApp }
                     </span>
                   )}
                 </div>
-                <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+                <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight" style={{ textWrap: 'balance' }}>
                   {app.name}
                 </h1>
                 <p className="text-sm font-semibold text-slate-700 mt-1">
                   {app.tagline}
                 </p>
-                <p className="text-xs text-slate-500 mt-2 max-w-2xl leading-relaxed">
+                <p className="text-xs text-slate-500 mt-2 max-w-2xl leading-relaxed" style={{ textWrap: 'pretty' }}>
                   {app.description}
                 </p>
               </div>
@@ -138,24 +145,24 @@ export const AppRunner: React.FC<AppRunnerProps> = ({ app, onBack, onSelectApp }
                 href={app.liveUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="py-3 px-5 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-bold text-sm shadow-md shadow-teal-600/25 transition-all flex items-center justify-center gap-2 cursor-pointer text-center"
+                className="btn-press py-3 pl-4 pr-5 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-bold text-sm shadow-md shadow-teal-600/25 flex items-center justify-center gap-2 cursor-pointer text-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-700 focus-visible:ring-offset-1"
               >
-                <Play className="w-4 h-4 fill-current" />
-                <span>Open Full Web App</span>
-                <ExternalLink className="w-4 h-4 ml-0.5" />
+                <Play className="w-4 h-4 fill-current ml-0.5" />
+                <span>Open full web app</span>
+                <ExternalLink className="w-4 h-4 ml-0.5 opacity-80" />
               </a>
 
               <a
                 href={app.githubUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="py-2.5 px-4 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 font-semibold text-xs border border-slate-200 transition-colors flex items-center justify-center gap-2"
+                className="btn-press py-2.5 px-4 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 font-semibold text-xs border border-slate-200 flex items-center justify-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-600"
               >
                 <GithubIcon className="w-4 h-4" />
-                <span>View Source Code</span>
+                <span>View source code</span>
               </a>
 
-              <div className="text-[11px] text-slate-400 text-center font-mono truncate">
+              <div className="text-[11px] text-slate-400 text-center font-mono truncate" title={app.liveUrl}>
                 {app.liveUrl}
               </div>
             </div>
@@ -163,7 +170,7 @@ export const AppRunner: React.FC<AppRunnerProps> = ({ app, onBack, onSelectApp }
 
           {/* Badges strip */}
           <div className="mt-6 pt-6 border-t border-slate-100 flex flex-wrap items-center gap-2">
-            <span className="text-xs font-semibold text-slate-500 mr-1">Standards & Tags:</span>
+            <span className="text-xs font-semibold text-slate-500 mr-1">Standards & tags:</span>
             {app.badges.map((badge, idx) => (
               <span
                 key={idx}
@@ -178,39 +185,42 @@ export const AppRunner: React.FC<AppRunnerProps> = ({ app, onBack, onSelectApp }
         {/* Tab Navigation for Detailed Specs */}
         <div className="flex items-center gap-2 mb-6 border-b border-slate-200 pb-2">
           <button
+            type="button"
             onClick={() => setActiveTab('workflow')}
-            className={`px-4 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer flex items-center gap-2 ${
+            className={`btn-press px-4 py-2 rounded-xl text-xs font-bold cursor-pointer flex items-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-600 ${
               activeTab === 'workflow'
                 ? 'bg-teal-600 text-white shadow-xs'
                 : 'bg-white hover:bg-slate-100 text-slate-600 border border-slate-200'
             }`}
           >
             <Layers className="w-4 h-4" />
-            <span>Clinical Workflow Pipeline</span>
+            <span>Clinical workflow pipeline</span>
           </button>
 
           <button
+            type="button"
             onClick={() => setActiveTab('rules')}
-            className={`px-4 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer flex items-center gap-2 ${
+            className={`btn-press px-4 py-2 rounded-xl text-xs font-bold cursor-pointer flex items-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-600 ${
               activeTab === 'rules'
                 ? 'bg-teal-600 text-white shadow-xs'
                 : 'bg-white hover:bg-slate-100 text-slate-600 border border-slate-200'
             }`}
           >
             <ShieldCheck className="w-4 h-4" />
-            <span>Integrity Guarantees & Scope</span>
+            <span>Integrity guarantees & scope</span>
           </button>
 
           <button
+            type="button"
             onClick={() => setActiveTab('exports')}
-            className={`px-4 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer flex items-center gap-2 ${
+            className={`btn-press px-4 py-2 rounded-xl text-xs font-bold cursor-pointer flex items-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-600 ${
               activeTab === 'exports'
                 ? 'bg-teal-600 text-white shadow-xs'
                 : 'bg-white hover:bg-slate-100 text-slate-600 border border-slate-200'
             }`}
           >
             <FileCheck2 className="w-4 h-4" />
-            <span>Citation & Export Deliverables</span>
+            <span>Citation & export deliverables</span>
           </button>
         </div>
 
@@ -220,11 +230,11 @@ export const AppRunner: React.FC<AppRunnerProps> = ({ app, onBack, onSelectApp }
             {app.workflowSteps.map((step) => (
               <div key={step.step} className="bg-white rounded-2xl border border-slate-200 p-5 shadow-xs flex flex-col justify-between">
                 <div>
-                  <div className="w-8 h-8 rounded-xl bg-teal-50 border border-teal-200 text-teal-800 text-xs font-bold flex items-center justify-center mb-3">
+                  <div className="w-8 h-8 rounded-xl bg-teal-50 border border-teal-200 text-teal-800 text-xs font-bold flex items-center justify-center mb-3 tabular-nums">
                     Step {step.step}
                   </div>
                   <h3 className="text-sm font-bold text-slate-900 mb-1">{step.title}</h3>
-                  <p className="text-xs text-slate-600 leading-relaxed">{step.desc}</p>
+                  <p className="text-xs text-slate-600 leading-relaxed" style={{ textWrap: 'pretty' }}>{step.desc}</p>
                 </div>
               </div>
             ))}
@@ -240,9 +250,9 @@ export const AppRunner: React.FC<AppRunnerProps> = ({ app, onBack, onSelectApp }
                   <ShieldCheck className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
                   <div>
                     <h4 className="text-xs font-bold text-slate-800 uppercase tracking-wider mb-1">
-                      Invariant Rule #{idx + 1}
+                      Invariant rule #{idx + 1}
                     </h4>
-                    <p className="text-xs text-slate-600 leading-relaxed">{highlight}</p>
+                    <p className="text-xs text-slate-600 leading-relaxed" style={{ textWrap: 'pretty' }}>{highlight}</p>
                   </div>
                 </div>
               ))}
@@ -251,8 +261,8 @@ export const AppRunner: React.FC<AppRunnerProps> = ({ app, onBack, onSelectApp }
             <div className="p-4 rounded-2xl bg-teal-50 border border-teal-200 flex items-start gap-3">
               <Sparkles className="w-5 h-5 text-teal-600 shrink-0 mt-0.5" />
               <div>
-                <h4 className="text-xs font-bold text-teal-950 mb-0.5">Zero Hallucination Philosophy</h4>
-                <p className="text-xs text-teal-800 leading-relaxed">
+                <h4 className="text-xs font-bold text-teal-950 mb-0.5">Zero hallucination philosophy</h4>
+                <p className="text-xs text-teal-800 leading-relaxed" style={{ textWrap: 'pretty' }}>
                   Every citation generated in this tool resolves strictly to verified canonical records (Crossref, PubMed, Europe PMC). Unsupported assertive claims are audited and converted into clinical uncertainty disclosures before any deliverable is exported.
                 </p>
               </div>
@@ -266,12 +276,12 @@ export const AppRunner: React.FC<AppRunnerProps> = ({ app, onBack, onSelectApp }
             <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-xs">
               <h4 className="text-sm font-bold text-slate-900 mb-3 flex items-center gap-2">
                 <FileCheck2 className="w-4 h-4 text-teal-600" />
-                <span>Publication-Grade Exports</span>
+                <span>Publication-grade exports</span>
               </h4>
               <div className="space-y-2">
                 {app.exportFormats.map((fmt, idx) => (
                   <div key={idx} className="flex items-center gap-2 p-2.5 rounded-xl bg-slate-50 border border-slate-100 text-xs text-slate-700 font-medium">
-                    <span className="w-2 h-2 rounded-full bg-teal-500"></span>
+                    <span className="w-2 h-2 rounded-full bg-teal-500" aria-hidden="true"></span>
                     <span>{fmt}</span>
                   </div>
                 ))}
@@ -281,7 +291,7 @@ export const AppRunner: React.FC<AppRunnerProps> = ({ app, onBack, onSelectApp }
             <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-xs">
               <h4 className="text-sm font-bold text-slate-900 mb-3 flex items-center gap-2">
                 <ShieldCheck className="w-4 h-4 text-sky-600" />
-                <span>Supported Practice Guidelines & Authorities</span>
+                <span>Supported practice guidelines & authorities</span>
               </h4>
               <div className="flex flex-wrap gap-2">
                 {app.supportedStandards.map((std, idx) => (
@@ -301,13 +311,14 @@ export const AppRunner: React.FC<AppRunnerProps> = ({ app, onBack, onSelectApp }
               href="https://dr-raouf.lovable.app/"
               target="_blank"
               rel="noopener noreferrer"
-              className="cursor-pointer block rounded-full focus:outline-none transition-transform active:scale-95"
+              aria-label="Visit Dr. Raouf Roshdy's academic portfolio (opens in a new tab)"
+              className="cursor-pointer block rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-600 focus-visible:ring-offset-2 transition-transform duration-150 active:scale-95"
               title="Dr. Raouf Roshdy"
             >
               <img
                 src="/dr-raouf.jpg"
                 alt="Dr. Raouf Roshdy"
-                className="w-12 h-12 rounded-full object-cover border-2 border-teal-500/40 shadow-xs hover:border-teal-500 transition-colors"
+                className="w-12 h-12 rounded-full object-cover border-2 border-teal-500/40 shadow-xs hover:border-teal-500 transition-colors duration-150 img-hairline"
               />
             </a>
             <div>
@@ -315,14 +326,14 @@ export const AppRunner: React.FC<AppRunnerProps> = ({ app, onBack, onSelectApp }
                 href="https://dr-raouf.lovable.app/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-sm font-bold text-slate-900 hover:text-teal-700 transition-colors cursor-pointer block"
+                className="text-sm font-bold text-slate-900 hover:text-teal-700 transition-colors duration-150 cursor-pointer block focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-teal-600 rounded"
                 title="Dr. Raouf Roshdy"
               >
                 Dr. Raouf Roshdy
               </a>
               <div className="text-xs text-teal-700 font-semibold">Lead Investigator & Creator</div>
               {app.authorNotes && (
-                <p className="text-xs text-slate-500 italic mt-1 max-w-xl">
+                <p className="text-xs text-slate-500 italic mt-1 max-w-xl" style={{ textWrap: 'pretty' }}>
                   "{app.authorNotes}"
                 </p>
               )}
@@ -333,10 +344,10 @@ export const AppRunner: React.FC<AppRunnerProps> = ({ app, onBack, onSelectApp }
             href={app.liveUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="py-2.5 px-5 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-semibold text-xs shadow-md shadow-teal-600/20 transition-all flex items-center gap-1.5 cursor-pointer shrink-0"
+            className="btn-press py-2.5 pl-4 pr-5 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-semibold text-xs shadow-md shadow-teal-600/20 flex items-center gap-1.5 cursor-pointer shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-700 focus-visible:ring-offset-1"
           >
-            <span>Launch Web App</span>
-            <ArrowRight className="w-4 h-4" />
+            <span>Launch web app</span>
+            <ArrowRight className="w-4 h-4 ml-0.5" />
           </a>
         </div>
       </div>

@@ -17,24 +17,24 @@ export const AppCard: React.FC<AppCardProps> = ({ app, onOpenApp }) => {
     <div className="daylight-card daylight-card-hover rounded-2xl p-6 flex flex-col justify-between group relative overflow-hidden bg-white">
       {/* Top ambient color strip */}
       <div 
-        className="absolute top-0 left-0 right-0 h-[2.5px] opacity-80 group-hover:opacity-100 transition-opacity"
+        className="absolute top-0 left-0 right-0 h-[2.5px] opacity-80 group-hover:opacity-100 transition-opacity duration-200"
         style={{ backgroundColor: app.color.accent }}
+        aria-hidden="true"
       />
 
       <div>
         {/* Header: Icon, Category & Actions */}
         <div className="flex items-start justify-between gap-3 mb-4">
           <div className="flex items-center gap-3">
+            {/* Concentric radii: wrapper 12px, padding 6px -> inner image 6px */}
             <div 
               className="w-12 h-12 rounded-xl flex items-center justify-center border shadow-xs p-1.5 overflow-hidden shrink-0 bg-slate-50"
-              style={{ 
-                borderColor: '#e2e8f0'
-              }}
+              style={{ borderColor: '#e2e8f0' }}
             >
               <img 
                 src={app.iconUrl} 
                 alt={`${app.name} icon`} 
-                className="w-full h-full object-contain rounded-lg"
+                className="w-full h-full object-contain rounded-[6px] img-hairline"
                 onError={(e) => {
                   (e.target as HTMLElement).style.display = 'none';
                 }}
@@ -51,7 +51,7 @@ export const AppCard: React.FC<AppCardProps> = ({ app, onOpenApp }) => {
                   </span>
                 )}
               </div>
-              <h3 className="text-lg font-bold text-slate-900 group-hover:text-teal-700 transition-colors">
+              <h3 className="text-lg font-bold text-slate-900 group-hover:text-teal-700 transition-colors duration-150">
                 {app.name}
               </h3>
             </div>
@@ -62,8 +62,9 @@ export const AppCard: React.FC<AppCardProps> = ({ app, onOpenApp }) => {
               href={app.githubUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-1.5 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition-colors"
-              title="View Source on GitHub"
+              aria-label={`View ${app.name} source code on GitHub`}
+              className="p-1.5 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition-colors duration-150 focus-visible:ring-2 focus-visible:ring-teal-600 focus-visible:outline-none"
+              title="View source on GitHub"
             >
               <GithubIcon className="w-4 h-4" />
             </a>
@@ -75,7 +76,7 @@ export const AppCard: React.FC<AppCardProps> = ({ app, onOpenApp }) => {
           {app.tagline}
         </div>
 
-        {/* Description */}
+        {/* Description with text-wrap: pretty */}
         <p className="text-xs text-slate-500 leading-relaxed mb-4 line-clamp-3">
           {app.description}
         </p>
@@ -91,33 +92,34 @@ export const AppCard: React.FC<AppCardProps> = ({ app, onOpenApp }) => {
             </span>
           ))}
           {app.badges.length > 3 && (
-            <span className="text-[10px] font-medium px-1.5 py-0.5 rounded-md bg-slate-100/70 text-slate-500 border border-slate-200/50">
+            <span className="text-[10px] font-medium px-1.5 py-0.5 rounded-md bg-slate-100/70 text-slate-500 border border-slate-200/50 tabular-nums">
               +{app.badges.length - 3}
             </span>
           )}
         </div>
       </div>
 
-      {/* Card Action Footer: Direct launch in clean new page */}
+      {/* Card Action Footer: Asymmetric padding + press feedback */}
       <div className="pt-3 border-t border-slate-100 flex items-center justify-between gap-2 mt-auto">
         <a
           href={app.liveUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex-1 py-2 px-3 rounded-xl bg-teal-600 hover:bg-teal-700 text-white text-xs font-semibold transition-all duration-200 flex items-center justify-center gap-1.5 shadow-xs hover:shadow-md cursor-pointer"
+          className="btn-press flex-1 py-2 pl-2.5 pr-3 rounded-xl bg-teal-600 hover:bg-teal-700 text-white text-xs font-semibold flex items-center justify-center gap-1.5 shadow-xs hover:shadow-md cursor-pointer focus-visible:ring-2 focus-visible:ring-teal-700 focus-visible:ring-offset-1 focus-visible:outline-none"
         >
-          <Play className="w-3.5 h-3.5 fill-current" />
-          <span>Launch Web App</span>
+          <Play className="w-3.5 h-3.5 fill-current ml-0.5" />
+          <span>Launch web app</span>
           <ExternalLink className="w-3.5 h-3.5 ml-0.5 opacity-80" />
         </a>
 
         <button
+          type="button"
           onClick={() => onOpenApp(app.id)}
-          className="py-2 px-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 border border-slate-200 transition-colors text-xs font-medium flex items-center gap-1 cursor-pointer"
-          title="View Specs & Workflow"
+          className="btn-press py-2 px-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-900 border border-slate-200 text-xs font-medium flex items-center gap-1 cursor-pointer focus-visible:ring-2 focus-visible:ring-teal-600 focus-visible:ring-offset-1 focus-visible:outline-none"
+          title="View specs & workflow"
         >
           <Info className="w-3.5 h-3.5 text-slate-500" />
-          <span>Specs</span>
+          <span>View specs</span>
         </button>
       </div>
     </div>

@@ -22,16 +22,17 @@ export const CategoryFilter: React.FC<CategoryFilterProps> = ({
         return (
           <button
             key={category}
+            type="button"
             onClick={() => onSelectCategory(category)}
-            className={`whitespace-nowrap px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all duration-200 flex items-center gap-1.5 cursor-pointer ${
+            className={`btn-press whitespace-nowrap px-3.5 py-1.5 rounded-xl text-xs font-medium flex items-center gap-1.5 cursor-pointer focus-visible:ring-2 focus-visible:ring-teal-600 focus-visible:ring-offset-1 focus-visible:outline-none transition-colors duration-150 ${
               isSelected
-                ? 'bg-teal-600 text-white font-semibold shadow-sm'
+                ? 'bg-teal-600 text-white font-semibold shadow-xs'
                 : 'bg-white hover:bg-slate-100 text-slate-600 hover:text-slate-900 border border-slate-200/90'
             }`}
           >
             <span>{category}</span>
             <span
-              className={`text-[10px] px-1.5 py-0.2 rounded-full font-semibold ${
+              className={`text-[10px] px-1.5 py-0.2 rounded-full font-semibold tabular-nums ${
                 isSelected
                   ? 'bg-white/20 text-white'
                   : 'bg-slate-100 text-slate-500'
