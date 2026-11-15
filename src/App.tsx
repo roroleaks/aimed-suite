@@ -7,7 +7,7 @@ import { AppRunner } from './components/AppRunner';
 import { Footer } from './components/Footer';
 import { APPS_DATA } from './data/apps';
 import { AppCategory } from './types';
-import { Compass } from 'lucide-react';
+import { Compass, Grid, RotateCcw, Search } from 'lucide-react';
 
 export function App() {
   const [currentAppId, setCurrentAppId] = useState<string | null>(null);
@@ -136,12 +136,17 @@ export function App() {
             {/* Filter and Headline Bar */}
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
               <div>
-                <div className="flex items-center gap-2">
-                  <h2 className="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight">
-                    Biomedical Applications & Tools
-                  </h2>
+                <div className="flex items-center gap-2.5">
+                  <div className="w-8 h-8 rounded-xl bg-teal-50 border border-teal-200/80 text-teal-700 flex items-center justify-center shadow-2xs">
+                    <Grid className="w-4 h-4" />
+                  </div>
+                  <div>
+                    <h2 className="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight">
+                      Biomedical Applications & Tools
+                    </h2>
+                  </div>
                   <span className="text-xs font-bold px-2.5 py-0.5 rounded-full bg-slate-100 border border-slate-200 text-slate-700">
-                    {filteredApps.length} Available
+                    {filteredApps.length} of {APPS_DATA.length} Available
                   </span>
                 </div>
               </div>
@@ -167,7 +172,7 @@ export function App() {
               </div>
             ) : (
               <div className="text-center py-16 bg-white rounded-2xl border border-slate-200 shadow-xs">
-                <Compass className="w-10 h-10 text-slate-400 mx-auto mb-3" />
+                <Search className="w-10 h-10 text-slate-300 mx-auto mb-3" />
                 <h3 className="text-base font-bold text-slate-800">No applications match your query</h3>
                 <p className="text-xs text-slate-500 mt-1 max-w-sm mx-auto">
                   Try adjusting your search terms or selecting 'All' from the category filter.
@@ -177,9 +182,10 @@ export function App() {
                     setSearchQuery('');
                     setSelectedCategory('All');
                   }}
-                  className="mt-4 px-4 py-2 rounded-xl bg-teal-50 text-teal-700 border border-teal-200 text-xs font-semibold hover:bg-teal-600 hover:text-white transition-colors cursor-pointer"
+                  className="mt-4 px-4 py-2 rounded-xl bg-teal-50 text-teal-700 border border-teal-200 text-xs font-semibold hover:bg-teal-600 hover:text-white transition-all cursor-pointer inline-flex items-center gap-1.5 shadow-2xs active:scale-95"
                 >
-                  Reset Filters
+                  <RotateCcw className="w-3.5 h-3.5" />
+                  <span>Reset Filters</span>
                 </button>
               </div>
             )}
