@@ -1,5 +1,5 @@
 import React from 'react';
-import { Activity, Search, X, Layers, CheckCircle2 } from 'lucide-react';
+import { Activity, Compass } from 'lucide-react';
 import { GithubIcon } from './GithubIcon';
 import { APPS_DATA } from '../data/apps';
 
@@ -19,7 +19,7 @@ export const Header: React.FC<HeaderProps> = ({
   setSearchQuery
 }) => {
   return (
-    <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200/90 shadow-2xs">
+    <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200/90 shadow-xs">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
         {/* Brand / Logo */}
         <div className="flex items-center gap-3 cursor-pointer select-none group" onClick={onNavigateHome}>
@@ -52,16 +52,15 @@ export const Header: React.FC<HeaderProps> = ({
                 placeholder="Search across all 12 medical web apps, features, guidelines..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full bg-slate-50 hover:bg-slate-100/70 focus:bg-white border border-slate-200 rounded-xl px-4 py-2 pl-9 text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 transition-all shadow-2xs"
+                className="w-full bg-slate-50 hover:bg-slate-100/70 focus:bg-white border border-slate-200 rounded-lg px-4 py-1.5 pl-9 text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 transition-all"
               />
-              <Search className="w-4 h-4 text-slate-400 absolute left-3 top-2.5" />
+              <Compass className="w-4 h-4 text-slate-400 absolute left-3 top-2.5" />
               {searchQuery && (
                 <button
                   onClick={() => setSearchQuery('')}
-                  className="absolute right-2.5 top-2 p-1 text-slate-400 hover:text-slate-600 rounded-md hover:bg-slate-200/60 transition-colors"
-                  title="Clear search"
+                  className="absolute right-2.5 top-2 text-xs text-slate-400 hover:text-slate-600"
                 >
-                  <X className="w-3.5 h-3.5" />
+                  ✕
                 </button>
               )}
             </div>
@@ -69,12 +68,9 @@ export const Header: React.FC<HeaderProps> = ({
         )}
 
         {/* Right Action Tools */}
-        <div className="flex items-center gap-2.5 sm:gap-3">
+        <div className="flex items-center gap-3">
           {/* Quick Repo Dropdown */}
-          <div className="relative hidden lg:flex items-center">
-            <div className="absolute left-2.5 pointer-events-none text-slate-400">
-              <Layers className="w-3.5 h-3.5" />
-            </div>
+          <div className="relative hidden lg:block">
             <select
               value={currentAppId || ''}
               onChange={(e) => {
@@ -84,7 +80,7 @@ export const Header: React.FC<HeaderProps> = ({
                   onNavigateHome();
                 }
               }}
-              className="bg-slate-50 hover:bg-slate-100 border border-slate-200 text-xs text-slate-700 rounded-xl pl-8 pr-8 py-2 focus:outline-none focus:border-teal-500 cursor-pointer transition-colors appearance-none font-medium shadow-2xs"
+              className="bg-slate-50 hover:bg-slate-100 border border-slate-200 text-xs text-slate-700 rounded-lg px-3 py-1.5 pr-8 focus:outline-none focus:border-teal-500 cursor-pointer transition-colors appearance-none font-medium"
             >
               <option value="">Jump to Application...</option>
               {APPS_DATA.map((app) => (
@@ -93,7 +89,7 @@ export const Header: React.FC<HeaderProps> = ({
                 </option>
               ))}
             </select>
-            <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-slate-400">
+            <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-slate-500">
               <svg className="fill-current h-4 w-4" viewBox="0 0 20 20">
                 <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" />
               </svg>
@@ -105,7 +101,7 @@ export const Header: React.FC<HeaderProps> = ({
             href="https://github.com/roroleaks"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-slate-50 hover:bg-slate-100 text-slate-700 hover:text-slate-900 border border-slate-200 transition-all text-xs font-medium shadow-2xs cursor-pointer active:scale-95"
+            className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-50 hover:bg-slate-100 text-slate-700 hover:text-slate-900 border border-slate-200 transition-all text-xs font-medium"
             title="Dr. Raouf Roshdy on GitHub"
           >
             <GithubIcon className="w-3.5 h-3.5" />
@@ -133,11 +129,10 @@ export const Header: React.FC<HeaderProps> = ({
                 href="https://dr-raouf.lovable.app/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-xs font-bold text-slate-800 leading-tight hover:text-teal-700 transition-colors cursor-pointer flex items-center gap-1"
+                className="text-xs font-bold text-slate-800 leading-tight hover:text-teal-700 transition-colors cursor-pointer block"
                 title="Dr. Raouf Roshdy"
               >
-                <span>Dr. Raouf Roshdy</span>
-                <CheckCircle2 className="w-3 h-3 text-teal-600 shrink-0" />
+                Dr. Raouf Roshdy
               </a>
               <div className="text-[10px] text-teal-600 font-semibold">Lead Investigator</div>
             </div>

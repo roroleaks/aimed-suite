@@ -1,5 +1,5 @@
 import React from 'react';
-import { Activity, ShieldAlert, CheckCircle2, ChevronRight, Stethoscope, Sparkles } from 'lucide-react';
+import { Activity, ShieldAlert } from 'lucide-react';
 import { APPS_DATA } from '../data/apps';
 
 interface FooterProps {
@@ -14,7 +14,7 @@ export const Footer: React.FC<FooterProps> = ({ onSelectApp, onNavigateHome }) =
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
           {/* Brand & Vision */}
           <div className="md:col-span-2">
-            <div className="flex items-center gap-2.5 mb-3 cursor-pointer select-none" onClick={onNavigateHome}>
+            <div className="flex items-center gap-2.5 mb-3 cursor-pointer" onClick={onNavigateHome}>
               <div className="w-8 h-8 rounded-lg bg-teal-600 text-white flex items-center justify-center shadow-xs">
                 <Activity className="w-4 h-4" />
               </div>
@@ -42,11 +42,10 @@ export const Footer: React.FC<FooterProps> = ({ onSelectApp, onNavigateHome }) =
                   href="https://dr-raouf.lovable.app/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-xs font-bold text-slate-900 hover:text-teal-700 transition-colors cursor-pointer flex items-center gap-1.5"
+                  className="text-xs font-bold text-slate-900 hover:text-teal-700 transition-colors cursor-pointer block"
                   title="Dr. Raouf Roshdy"
                 >
-                  <span>Dr. Raouf Roshdy</span>
-                  <CheckCircle2 className="w-3.5 h-3.5 text-teal-600 shrink-0" />
+                  Dr. Raouf Roshdy
                 </a>
                 <div className="text-[11px] text-teal-700 font-semibold">Lead Investigator & Creator</div>
               </div>
@@ -55,19 +54,18 @@ export const Footer: React.FC<FooterProps> = ({ onSelectApp, onNavigateHome }) =
 
           {/* Applications Column 1 */}
           <div>
-            <h4 className="text-xs font-bold text-slate-900 uppercase tracking-wider mb-3 flex items-center gap-1.5">
-              <Stethoscope className="w-3.5 h-3.5 text-teal-600" />
-              <span>Clinical & Synthesis Apps</span>
+            <h4 className="text-xs font-bold text-slate-900 uppercase tracking-wider mb-3">
+              Clinical & Synthesis Apps
             </h4>
             <ul className="space-y-2">
               {APPS_DATA.slice(0, 6).map((app) => (
                 <li key={app.id}>
                   <button
                     onClick={() => onSelectApp(app.id)}
-                    className="hover:text-teal-700 transition-colors text-left flex items-center gap-1.5 cursor-pointer group"
+                    className="hover:text-teal-700 transition-colors text-left flex items-center gap-1.5 cursor-pointer"
                   >
-                    <ChevronRight className="w-3 h-3 text-slate-400 group-hover:text-teal-600 group-hover:translate-x-0.5 transition-all" />
-                    <span className="font-medium text-slate-700 group-hover:text-slate-900">{app.name}</span>
+                    <span className="w-1.5 h-1.5 rounded-full bg-teal-500"></span>
+                    <span className="font-medium text-slate-700 hover:text-slate-900">{app.name}</span>
                   </button>
                 </li>
               ))}
@@ -76,19 +74,18 @@ export const Footer: React.FC<FooterProps> = ({ onSelectApp, onNavigateHome }) =
 
           {/* Applications Column 2 */}
           <div>
-            <h4 className="text-xs font-bold text-slate-900 uppercase tracking-wider mb-3 flex items-center gap-1.5">
-              <Sparkles className="w-3.5 h-3.5 text-sky-600" />
-              <span>Specialized Research Tools</span>
+            <h4 className="text-xs font-bold text-slate-900 uppercase tracking-wider mb-3">
+              Specialized Tools
             </h4>
             <ul className="space-y-2">
               {APPS_DATA.slice(6).map((app) => (
                 <li key={app.id}>
                   <button
                     onClick={() => onSelectApp(app.id)}
-                    className="hover:text-teal-700 transition-colors text-left flex items-center gap-1.5 cursor-pointer group"
+                    className="hover:text-teal-700 transition-colors text-left flex items-center gap-1.5 cursor-pointer"
                   >
-                    <ChevronRight className="w-3 h-3 text-slate-400 group-hover:text-sky-600 group-hover:translate-x-0.5 transition-all" />
-                    <span className="font-medium text-slate-700 group-hover:text-slate-900">{app.name}</span>
+                    <span className="w-1.5 h-1.5 rounded-full bg-sky-500"></span>
+                    <span className="font-medium text-slate-700 hover:text-slate-900">{app.name}</span>
                   </button>
                 </li>
               ))}
