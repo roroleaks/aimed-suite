@@ -24,7 +24,7 @@ export const CategoryFilter: React.FC<CategoryFilterProps> = ({
             key={category}
             type="button"
             onClick={() => onSelectCategory(category)}
-            className={`btn-press whitespace-nowrap px-3.5 py-1.5 rounded-xl text-xs font-medium flex items-center gap-1.5 cursor-pointer focus-visible:ring-2 focus-visible:ring-teal-600 focus-visible:ring-offset-1 focus-visible:outline-none transition-colors duration-150 ${
+            className={`h-8 btn-press whitespace-nowrap px-3.5 rounded-xl text-xs font-medium inline-flex items-center gap-1.5 cursor-pointer focus-visible:ring-2 focus-visible:ring-teal-600 focus-visible:ring-offset-1 focus-visible:outline-none transition-colors duration-150 ${
               isSelected
                 ? 'bg-teal-600 text-white font-semibold shadow-xs'
                 : 'bg-white hover:bg-slate-100 text-slate-600 hover:text-slate-900 border border-slate-200/90'
