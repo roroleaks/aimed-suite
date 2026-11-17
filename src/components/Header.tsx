@@ -30,10 +30,12 @@ export const Header: React.FC<HeaderProps> = ({
           onClick={onNavigateHome}
           aria-label="AIMed Suite homepage"
         >
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-teal-600 via-emerald-600 to-cyan-600 p-[1.5px] shadow-sm shadow-teal-600/20 group-hover:shadow-teal-600/30 transition-shadow duration-200">
-            <div className="w-full h-full bg-white rounded-[8.5px] flex items-center justify-center">
-              <Activity className="w-5 h-5 text-teal-600 group-hover:scale-105 transition-transform duration-200" />
-            </div>
+          <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-teal-600 via-emerald-600 to-cyan-600 p-[1.5px] shadow-sm shadow-teal-600/20 group-hover:shadow-teal-600/30 transition-shadow duration-200 overflow-hidden">
+            <img 
+              src="/icons/ai4med.png?v=2" 
+              alt="AIMed Suite Logo" 
+              className="w-full h-full object-cover rounded-[8.5px] img-hairline"
+            />
           </div>
           <div>
             <div className="flex items-center gap-2">
