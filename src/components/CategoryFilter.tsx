@@ -14,7 +14,7 @@ export const CategoryFilter: React.FC<CategoryFilterProps> = ({
   appCounts
 }) => {
   return (
-    <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none py-1">
+    <div className="flex items-center gap-2 overflow-x-auto pb-1.5 scrollbar-none py-1 -mx-4 px-4 sm:mx-0 sm:px-0">
       {CATEGORIES.map((category) => {
         const isSelected = selectedCategory === category;
         const count = appCounts[category as AppCategory] || 0;
@@ -24,18 +24,18 @@ export const CategoryFilter: React.FC<CategoryFilterProps> = ({
             key={category}
             type="button"
             onClick={() => onSelectCategory(category)}
-            className={`h-8 btn-press whitespace-nowrap px-3.5 rounded-xl text-xs font-medium inline-flex items-center gap-1.5 cursor-pointer focus-visible:ring-2 focus-visible:ring-teal-600 focus-visible:ring-offset-1 focus-visible:outline-none transition-colors duration-150 ${
+            className={`h-9 btn-press whitespace-nowrap px-3.5 rounded-xl text-xs font-semibold inline-flex items-center gap-1.5 cursor-pointer focus-visible:ring-2 focus-visible:ring-teal-600 focus-visible:ring-offset-1 focus-visible:outline-none transition-colors duration-150 shrink-0 ${
               isSelected
-                ? 'bg-teal-600 text-white font-semibold shadow-xs'
-                : 'bg-white hover:bg-slate-100 text-slate-600 hover:text-slate-900 border border-slate-200/90'
+                ? 'bg-teal-600 text-white shadow-xs'
+                : 'bg-white hover:bg-slate-100 text-slate-700 hover:text-slate-900 border border-slate-200/90'
             }`}
           >
             <span>{category}</span>
             <span
-              className={`text-[10px] px-1.5 py-0.2 rounded-full font-semibold tabular-nums ${
+              className={`text-[10px] px-1.5 py-0.5 rounded-full font-bold tabular-nums ${
                 isSelected
                   ? 'bg-white/20 text-white'
-                  : 'bg-slate-100 text-slate-500'
+                  : 'bg-slate-100 text-slate-600'
               }`}
             >
               {count}

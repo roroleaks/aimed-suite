@@ -5,6 +5,7 @@ import { CategoryFilter } from './components/CategoryFilter';
 import { AppCard } from './components/AppCard';
 import { AppRunner } from './components/AppRunner';
 import { Footer } from './components/Footer';
+import { QrCodeModal } from './components/QrCodeModal';
 import { APPS_DATA } from './data/apps';
 import { AppCategory } from './types';
 import { Compass } from 'lucide-react';
@@ -13,6 +14,7 @@ export function App() {
   const [currentAppId, setCurrentAppId] = useState<string | null>(null);
   const [selectedCategory, setSelectedCategory] = useState<AppCategory>('All');
   const [searchQuery, setSearchQuery] = useState('');
+  const [isQrModalOpen, setIsQrModalOpen] = useState(false);
 
   // Path synchronization with window.location
   useEffect(() => {
@@ -63,43 +65,41 @@ export function App() {
     return APPS_DATA.find((a) => a.id === currentAppId) || null;
   }, [currentAppId]);
 
-  // Category counts
+  // Aggregate category counts
   const appCounts = useMemo(() => {
-    const counts: Record<AppCategory, number> = {
+    const counts: Record<string, number> = {
       All: APPS_DATA.length,
       'Clinical CDSS': 0,
       'Evidence Synthesis': 0,
       'Critical Appraisal': 0,
       'Literature & Presentation': 0,
       'Practice Guidelines': 0,
-      'Medical AI & Search': 0
+      'Medical AI & Search': 0,
     };
-
     APPS_DATA.forEach((app) => {
       if (counts[app.category] !== undefined) {
         counts[app.category]++;
       }
     });
-
-    return counts;
+    return counts as Record<AppCategory, number>;
   }, []);
 
   // Filtered applications
   const filteredApps = useMemo(() => {
     return APPS_DATA.filter((app) => {
-      // Category check
+      // Category filter
       if (selectedCategory !== 'All' && app.category !== selectedCategory) {
         return false;
       }
-      // Search check
+      // Search query filter
       if (searchQuery.trim()) {
-        const q = searchQuery.toLowerCase();
-        const matchesName = app.name.toLowerCase().includes(q);
-        const matchesTagline = app.tagline.toLowerCase().includes(q);
-        const matchesDesc = app.description.toLowerCase().includes(q);
-        const matchesBadges = app.badges.some((b) => b.toLowerCase().includes(q));
-        const matchesHighlights = app.clinicalHighlights.some((h) => h.toLowerCase().includes(q));
-        return matchesName || matchesTagline || matchesDesc || matchesBadges || matchesHighlights;
+        const query = searchQuery.toLowerCase();
+        const matchName = app.name.toLowerCase().includes(query);
+        const matchTagline = app.tagline.toLowerCase().includes(query);
+        const matchDesc = app.description.toLowerCase().includes(query);
+        const matchBadge = app.badges.some((b) => b.toLowerCase().includes(query));
+        const matchHighlight = app.clinicalHighlights.some((h) => h.toLowerCase().includes(query));
+        return matchName || matchTagline || matchDesc || matchBadge || matchHighlight;
       }
       return true;
     });
@@ -107,16 +107,16 @@ export function App() {
 
   return (
     <div className="min-h-screen flex flex-col bg-slate-50 text-slate-900 daylight-grid-bg">
-      {/* Sticky Top Header */}
+      {/* Global Sticky Header */}
       <Header
         currentAppId={currentAppId || undefined}
         onNavigateHome={handleNavigateHome}
         onSelectApp={handleSelectApp}
         searchQuery={searchQuery}
         setSearchQuery={setSearchQuery}
+        onOpenQrModal={() => setIsQrModalOpen(true)}
       />
 
-      {/* Main Content View */}
       {currentApp ? (
         // Dedicated In-Portal Page for Selected Repo
         <main className="flex-1 flex flex-col">
@@ -129,10 +129,10 @@ export function App() {
       ) : (
         // Umbrella First Page / Showcase (Daylight)
         <main className="flex-1 flex flex-col">
-          <Hero />
+          <Hero onOpenQrModal={() => setIsQrModalOpen(true)} />
 
           {/* Applications Showcase Section */}
-          <section id="apps-grid" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 flex-1 w-full">
+          <section id="apps-grid" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-12 flex-1 w-full">
             {/* Filter and Headline Bar */}
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
               <div>
@@ -140,13 +140,13 @@ export function App() {
                   <h2 className="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight whitespace-nowrap">
                     Biomedical Applications & Tools
                   </h2>
-                  <span className="h-8 inline-flex items-center px-3 rounded-xl text-xs font-semibold bg-slate-100 border border-slate-200 text-slate-700 tabular-nums whitespace-nowrap shrink-0">
+                  <span className="h-9 inline-flex items-center px-3.5 rounded-xl text-xs font-semibold bg-slate-100 border border-slate-200 text-slate-700 tabular-nums whitespace-nowrap shrink-0">
                     {filteredApps.length} Available
                   </span>
                 </div>
               </div>
 
-              {/* Category Pills */}
+              {/* Category Pills with Touch Momentum Scroll */}
               <CategoryFilter
                 selectedCategory={selectedCategory}
                 onSelectCategory={setSelectedCategory}
@@ -154,9 +154,9 @@ export function App() {
               />
             </div>
 
-            {/* Apps Grid */}
+            {/* Apps Grid: Unified Height Grid with items-stretch */}
             {filteredApps.length > 0 ? (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
                 {filteredApps.map((app) => (
                   <AppCard
                     key={app.id}
@@ -193,7 +193,15 @@ export function App() {
         onSelectApp={handleSelectApp}
         onNavigateHome={handleNavigateHome}
       />
+
+      {/* Global QR Code Modal */}
+      <QrCodeModal 
+        isOpen={isQrModalOpen} 
+        onClose={() => setIsQrModalOpen(false)} 
+        url="https://roshdy-med-suite.vercel.app"
+      />
     </div>
   );
 }
+
 export default App;

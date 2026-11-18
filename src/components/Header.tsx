@@ -1,5 +1,5 @@
-import React from 'react';
-import { Activity, Compass, X } from 'lucide-react';
+import React, { useState } from 'react';
+import { Activity, Compass, X, QrCode, Search } from 'lucide-react';
 import { GithubIcon } from './GithubIcon';
 import { APPS_DATA } from '../data/apps';
 
@@ -9,6 +9,7 @@ interface HeaderProps {
   onSelectApp: (id: string) => void;
   searchQuery: string;
   setSearchQuery: (query: string) => void;
+  onOpenQrModal?: () => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({
@@ -16,21 +17,24 @@ export const Header: React.FC<HeaderProps> = ({
   onNavigateHome,
   onSelectApp,
   searchQuery,
-  setSearchQuery
+  setSearchQuery,
+  onOpenQrModal
 }) => {
+  const [mobileSearchOpen, setMobileSearchOpen] = useState(false);
+
   return (
-    <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200/90 shadow-xs">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
+    <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200/90 shadow-xs">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-3 sm:gap-4">
         {/* Brand / Logo */}
         <div 
           role="button"
           tabIndex={0}
           onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') onNavigateHome(); }}
-          className="flex items-center gap-3 cursor-pointer select-none group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-600 rounded-xl p-1 -ml-1" 
+          className="flex items-center gap-2.5 sm:gap-3 cursor-pointer select-none group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-600 rounded-xl p-1 -ml-1 shrink-0" 
           onClick={onNavigateHome}
           aria-label="AIMed Suite homepage"
         >
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-teal-600 via-emerald-600 to-cyan-600 p-[1.5px] shadow-sm shadow-teal-600/20 group-hover:shadow-teal-600/30 transition-shadow duration-200 overflow-hidden">
+          <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-teal-600 via-emerald-600 to-cyan-600 p-[1.5px] shadow-sm shadow-teal-600/20 group-hover:shadow-teal-600/30 transition-shadow duration-200 overflow-hidden shrink-0">
             <img 
               src="/icons/ai4med.png?v=2" 
               alt="AIMed Suite Logo" 
@@ -38,21 +42,21 @@ export const Header: React.FC<HeaderProps> = ({
             />
           </div>
           <div>
-            <div className="flex items-center gap-2">
-              <span className="font-bold text-lg tracking-tight text-slate-900 group-hover:text-teal-700 transition-colors duration-150">
+            <div className="flex items-center gap-1.5 sm:gap-2">
+              <span className="font-bold text-base sm:text-lg tracking-tight text-slate-900 group-hover:text-teal-700 transition-colors duration-150">
                 AIMed Suite
               </span>
               <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-teal-50 text-teal-700 border border-teal-200 uppercase tracking-wider">
-                Umbrella Hub
+                Hub
               </span>
             </div>
-            <p className="text-xs text-slate-500 hidden sm:block">
+            <p className="text-[11px] text-slate-500 hidden sm:block">
               Clinical AI & Biomedical Informatics Ecosystem
             </p>
           </div>
         </div>
 
-        {/* Global Search Bar (when on home page) */}
+        {/* Desktop Global Search Bar */}
         {!currentAppId && (
           <div className="hidden md:flex flex-1 max-w-md mx-4">
             <div className="relative w-full">
@@ -62,10 +66,10 @@ export const Header: React.FC<HeaderProps> = ({
               <input
                 id="global-app-search"
                 type="search"
-                placeholder="Search across all 12 medical web apps, features, guidelines..."
+                placeholder="Search across all 12 medical web apps, features..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full bg-slate-50 hover:bg-slate-100/70 focus:bg-white border border-slate-200 rounded-lg px-4 py-1.5 pl-9 text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 transition-colors duration-150"
+                className="w-full h-9 bg-slate-50 hover:bg-slate-100/70 focus:bg-white border border-slate-200 rounded-xl px-4 pl-9 text-xs sm:text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20 transition-colors duration-150"
               />
               <Compass className="w-4 h-4 text-slate-400 absolute left-3 top-2.5 pointer-events-none" aria-hidden="true" />
               {searchQuery && (
@@ -83,8 +87,34 @@ export const Header: React.FC<HeaderProps> = ({
         )}
 
         {/* Right Action Tools */}
-        <div className="flex items-center gap-3">
-          {/* Quick Repo Dropdown */}
+        <div className="flex items-center gap-2 sm:gap-3">
+          {/* Mobile search toggle button */}
+          {!currentAppId && (
+            <button
+              type="button"
+              onClick={() => setMobileSearchOpen(!mobileSearchOpen)}
+              aria-label="Toggle mobile search"
+              className="md:hidden btn-press p-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200 text-xs flex items-center justify-center cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-600"
+            >
+              <Search className="w-4 h-4" />
+            </button>
+          )}
+
+          {/* QR Code Action Button (Right Side Above) */}
+          {onOpenQrModal && (
+            <button
+              type="button"
+              onClick={onOpenQrModal}
+              aria-label="Scan QR Code to open on mobile"
+              className="btn-press flex items-center gap-1.5 h-9 px-2.5 sm:px-3 rounded-xl bg-slate-50 hover:bg-slate-100 text-slate-700 hover:text-slate-900 border border-slate-200 text-xs font-semibold focus-visible:ring-2 focus-visible:ring-teal-600 focus-visible:outline-none cursor-pointer"
+              title="Scan QR Code for mobile"
+            >
+              <QrCode className="w-4 h-4 text-teal-600" />
+              <span className="hidden sm:inline">Mobile QR</span>
+            </button>
+          )}
+
+          {/* Quick Repo Dropdown (Desktop) */}
           <div className="relative hidden lg:block">
             <label htmlFor="header-jump-select" className="sr-only">Jump to application</label>
             <select
@@ -97,7 +127,7 @@ export const Header: React.FC<HeaderProps> = ({
                   onNavigateHome();
                 }
               }}
-              className="bg-slate-50 hover:bg-slate-100 border border-slate-200 text-xs text-slate-700 rounded-lg px-3 py-1.5 pr-8 focus:outline-none focus:border-teal-500 focus-visible:ring-2 focus-visible:ring-teal-600 cursor-pointer transition-colors duration-150 appearance-none font-medium"
+              className="h-9 bg-slate-50 hover:bg-slate-100 border border-slate-200 text-xs text-slate-700 rounded-xl px-3 pr-8 focus:outline-none focus:border-teal-500 focus-visible:ring-2 focus-visible:ring-teal-600 cursor-pointer transition-colors duration-150 appearance-none font-medium"
             >
               <option value="">Jump to application...</option>
               {APPS_DATA.map((app) => (
@@ -119,7 +149,7 @@ export const Header: React.FC<HeaderProps> = ({
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Visit Dr. Raouf Roshdy on GitHub (opens in a new tab)"
-            className="btn-press flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-50 hover:bg-slate-100 text-slate-700 hover:text-slate-900 border border-slate-200 text-xs font-medium focus-visible:ring-2 focus-visible:ring-teal-600 focus-visible:outline-none"
+            className="btn-press flex items-center gap-1.5 h-9 px-2.5 sm:px-3 rounded-xl bg-slate-50 hover:bg-slate-100 text-slate-700 hover:text-slate-900 border border-slate-200 text-xs font-semibold focus-visible:ring-2 focus-visible:ring-teal-600 focus-visible:outline-none"
             title="Dr. Raouf Roshdy on GitHub"
           >
             <GithubIcon className="w-3.5 h-3.5" />
@@ -127,13 +157,13 @@ export const Header: React.FC<HeaderProps> = ({
           </a>
 
           {/* Lead Investigator Badge with Photo */}
-          <div className="flex items-center gap-2 pl-2 border-l border-slate-200">
+          <div className="flex items-center gap-2 pl-1.5 sm:pl-2 border-l border-slate-200">
             <a
               href="https://dr-raouf.lovable.app/"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Visit Dr. Raouf Roshdy's academic portfolio (opens in a new tab)"
-              className="relative cursor-pointer block rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-600 focus-visible:ring-offset-2 transition-transform duration-150 active:scale-95"
+              className="relative cursor-pointer block rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-600 focus-visible:ring-offset-2 transition-transform duration-150 active:scale-95 shrink-0"
               title="Dr. Raouf Roshdy"
             >
               <img
@@ -158,6 +188,33 @@ export const Header: React.FC<HeaderProps> = ({
           </div>
         </div>
       </div>
+
+      {/* Mobile Search Dropdown Bar */}
+      {!currentAppId && mobileSearchOpen && (
+        <div className="md:hidden px-4 pb-3 pt-1 border-t border-slate-100 bg-white">
+          <div className="relative w-full">
+            <input
+              type="search"
+              placeholder="Search 12 medical apps, features..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              autoFocus
+              className="w-full h-10 bg-slate-50 border border-slate-200 rounded-xl px-3 pl-9 text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20"
+            />
+            <Compass className="w-4 h-4 text-slate-400 absolute left-3 top-3 pointer-events-none" aria-hidden="true" />
+            {searchQuery && (
+              <button
+                type="button"
+                onClick={() => setSearchQuery('')}
+                aria-label="Clear search query"
+                className="absolute right-2.5 top-2.5 text-xs text-slate-400 hover:text-slate-600 p-0.5"
+              >
+                <X className="w-4 h-4" />
+              </button>
+            )}
+          </div>
+        </div>
+      )}
     </header>
   );
 };
