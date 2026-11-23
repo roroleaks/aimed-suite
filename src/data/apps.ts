@@ -43,7 +43,7 @@ export const APPS_DATA: AppItem[] = [
     description: 'Universal clinical intelligence platform spanning 15 major medical specialties. Features domain-calibrated taxonomies, international practice guideline authorities, and deterministic PICO formulation.',
     category: 'Evidence Synthesis',
     iconUrl: '/icons/ai4med.png?v=2',
-    liveUrl: 'https://aimed2.vercel.app/',
+    liveUrl: 'https://aimed-pico.vercel.app',
     githubUrl: 'https://github.com/roroleaks/AIMED',
     primaryLanguage: 'TypeScript',
     featured: true,

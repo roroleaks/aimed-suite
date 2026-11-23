@@ -12,7 +12,7 @@ A production-grade umbrella web portal consolidating **12 specialized biomedical
 | # | Application | Category | Live URL / Endpoint | GitHub Repository | Primary Capabilities |
 |---|---|---|---|---|---|
 | 1 | **AIPICO v3.1** | Clinical CDSS | `https://aipico.vercel.app` | [`roroleaks/AIPICO-app`](https://github.com/roroleaks/AIPICO-app) | Deterministic PICO evidence retrieval (OBGYN), claim filtering, Vancouver superscripts, Word & PDF exports. |
-| 2 | **Aimed** | Evidence Synthesis | `https://aimed2.vercel.app/` | [`roroleaks/AIMED`](https://github.com/roroleaks/AIMED) | Universal multi-specialty clinical intelligence across 15 core medical disciplines (ACOG, AHA, NCCN, AAP, KDIGO). |
+| 2 | **Aimed** | Evidence Synthesis | `https://aimed-pico.vercel.app` | [`roroleaks/AIMED`](https://github.com/roroleaks/AIMED) | Universal multi-specialty clinical intelligence across 15 core medical disciplines (ACOG, AHA, NCCN, AAP, KDIGO). |
 | 3 | **AppraisAI** | Critical Appraisal | `https://apprais-ai.vercel.app` | [`roroleaks/AppraisAI`](https://github.com/roroleaks/AppraisAI) | Automated paper critical appraisal adhering to EQUATOR checklists, Cochrane RoB 2.0, AMSTAR-2, and GRADE. |
 | 4 | **Preppt** | Literature & Presentation | `https://preppt-ai.vercel.app` | [`roroleaks/Preppt`](https://github.com/roroleaks/Preppt) | Europe PMC & Semantic Scholar dual retrieval, multi-factor ranking, and publication-grade Word slide card export. |
 | 5 | **SciDraft AI** | Academic Writing | `https://scidraft-ai.vercel.app` | [`roroleaks/scidraft-ai`](https://github.com/roroleaks/scidraft-ai) | Systematic literature harvesting, Oxford CEBM Evidence Hierarchy (Levels 1–5), and synchronized Vancouver/APA citations. |
